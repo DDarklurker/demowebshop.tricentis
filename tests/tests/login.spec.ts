@@ -9,6 +9,6 @@ test.describe('Login Tests: @login', () =>{
         loginPage = new LoginPage(page);
         basePage = new BasePage(page);
         await page.goto('/');
-        
+        await basePage.verifyBasePage();
     });
 });
