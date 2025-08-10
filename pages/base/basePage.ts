@@ -55,5 +55,8 @@ export class BasePage {
         await expect(this.computerTab).toBeVisible;
         await expect(this.electronicsTab).toBeVisible;
     }
+    async goto(){
+        await this.page.goto(process.env.BASIC_URL as string);
+    }
 
 }
