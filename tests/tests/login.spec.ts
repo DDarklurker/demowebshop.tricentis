@@ -21,10 +21,13 @@ test.describe('Login Tests: @login', () =>{
         await loginPage.passwordPlaceholder.fill(process.env.PASSWORD as string);
         await loginPage.loginButton.click();
         await expect(basePage.customerInfoTab).toContainText(process.env.LOGIN as string);
+        await basePage.logoutTab.click();
+        await expect(basePage.customerInfoTab).not.toContainText(process.env.LOGIN as string);
     });
     test('Test Case 2: Login User with incorrect email and password: @login', async () => {
         await loginPage.emailPlaceholder.fill(faker.internet.email());
-        await loginPage.emailPlaceholder.fill(faker.internet.password());
+        await loginPage.passwordPlaceholder.fill(faker.internet.password());
+        await loginPage.loginButton.click();
+        await expect(loginPage.incorrectLoginMessage).toContainText('Login was unsuccessful.');
     });
-
 });
