@@ -10,25 +10,20 @@
 ---
 
 **Test Case 1:Login User with correct email and password**
-<br> *Automated: No.*
+<br> *Automated: Yes.*
 
 1. Enter correct email address and password.
 2. Click 'login' button.
 3. Verify that 'Logged in as username' is visible.
+4. click 'Log out' button.
+5. Verify that  'Logged in as username' isn`t visible
 
 **Test Case 2: Login User with incorrect email and password**
-<br> *Automated: No.*
+<br> *Automated: Yes.*
 
-1. Enter correct email address and password.
+1. Enter incorrect email address and password.
 2. Click 'login' button.
 3. Verify that 'Please enter a valid email address' is visible.
 
-**Test Case 4: Logout User**
-<br> *Automated: No.*
 
-1. Enter correct email address and password.
-2. Click 'login' button.
-3. Verify that 'Logged in as username' is visible. 'Logged in as username' is visible
-4. click 'Log out' button.
-5. Verify that  'Logged in as username' isn`t visible
 
