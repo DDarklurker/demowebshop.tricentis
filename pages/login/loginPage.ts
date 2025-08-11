@@ -16,7 +16,4 @@ export class LoginPage extends BasePage {
         this.forgotPasswordTab = page.locator('[href="/passwordrecovery"]');
         this.newCustomerButton = page.locator(`[onclick="location.href='/register'"]`);
     }
-    async verifyLoginPage(page:Page){
-        await expect(page).toHaveURL(/\/login$/);
-    }
 }   
