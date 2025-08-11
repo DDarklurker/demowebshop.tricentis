@@ -27,7 +27,7 @@ export class BasePage {
         this.registerTab = page.locator('a[href="/register"]');
         this.loginTab = page.locator('a[href="/login"]');  
         this.logoutTab = page.locator('a[href="/logout"]');
-        this.customerInfoTab = page.locator('a[href="/customer/info"]');
+        this.customerInfoTab = page.locator('a[href="/customer/info"]').first();
         this.shoppingCartTab = page.locator('a[href="/cart"]');
         this.wishlistTab = page.locator('a[href="/wishlist"]');
         this.searchPlaceholder = page.locator('[id="small-searchterms"]');
