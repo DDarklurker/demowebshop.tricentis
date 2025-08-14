@@ -16,7 +16,7 @@ test.describe('Login Tests: @authorization', () =>{
         await basePage.loginTab.click();
         await expect(page).toHaveURL('/login');
     });
-    test('Login User with correct email and password: ', {tag: '@smoke'}, async () => {
+    test('Test Case 1: Login User with correct email and password: ', {tag: '@smoke'}, async () => {
         await loginPage.emailPlaceholder.fill(process.env.LOGIN as string);
         await loginPage.passwordPlaceholder.fill(process.env.PASSWORD as string);
         await loginPage.loginButton.click();
@@ -24,7 +24,7 @@ test.describe('Login Tests: @authorization', () =>{
         await basePage.logoutTab.click();
         await expect(basePage.customerInfoTab).not.toContainText(process.env.LOGIN as string);
     });
-    test('Test Case 2: Login User with incorrect password: @authorization', async () => {
+    test('Test Case 2: Login User with incorrect password: @authorization',  {tag: '@smoke'}, async () => {
         await loginPage.emailPlaceholder.fill(process.env.LOGIN as string);
         await loginPage.passwordPlaceholder.fill(faker.internet.password());
         await loginPage.loginButton.click();
