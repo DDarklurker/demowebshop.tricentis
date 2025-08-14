@@ -38,9 +38,20 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'auth',
+      testMatch: ['**/tests/auth/**/*.spec.ts'],
+      use: { ...devices['Desktop Chrome'], storageState: undefined }
     },
+    {
+      name: 'guest',
+      testMatch: ['**/tests/guest/**/*.spec.ts'],
+      use: { ...devices['Desktop Chrome'], storageState: undefined }
+    },
+    {
+      name: 'user',
+      testMatch: ['**/tests/user/**/*.spec.ts'],
+      use: { ...devices['Desktop Chrome'], storageState: 'storage/auth.json' }
+    }
 
 
     /* Test against mobile viewports. */

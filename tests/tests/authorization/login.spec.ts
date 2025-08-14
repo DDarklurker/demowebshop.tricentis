@@ -16,7 +16,7 @@ test.describe('Login Tests: @authorization', () =>{
         await basePage.loginTab.click();
         await expect(page).toHaveURL('/login');
     });
-    test('Login User with correct email and password: @authorization', async () => {
+    test('Login User with correct email and password: ', {tag: '@smoke'}, async () => {
         await loginPage.emailPlaceholder.fill(process.env.LOGIN as string);
         await loginPage.passwordPlaceholder.fill(process.env.PASSWORD as string);
         await loginPage.loginButton.click();

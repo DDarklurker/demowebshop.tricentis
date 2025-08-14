@@ -21,7 +21,7 @@ test.describe('Recover Tests: @authorization', async () => {
         await loginPage.forgotPasswordTab.click();
         await expect(page).toHaveURL('/passwordrecovery');
     });
-    test('Test Case 1: Recovere with correct email: @authorization', async () => {
+    test('Test Case 1: Recovere with correct email: @authorization', {tag: '@smoke'}, async () => {
         await recoverPage.emailPlaceholder.fill(process.env.LOGIN as string);
         await recoverPage.recoverButton.click();
         await expect(recoverPage.errorMessage).toContainText('Email with instructions has been sent to you.');
