@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { LoginPage } from "../login/loginPage";
+import { LoginPage } from "../loginPage";
 
 export class RecoverPage extends LoginPage{
     readonly emailPlaceholder: Locator;

@@ -1,7 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { BasePage } from "../../../pages/base/basePage";
 import { LoginPage } from "../../../pages/login/loginPage";
-import { RecoverPage } from "../../../pages/passwordrecovery/recoverPage"
+import { RecoverPage } from "../../../pages/login/passwordrecovery/recoverPage";
 import { faker } from "@faker-js/faker";
 
 
