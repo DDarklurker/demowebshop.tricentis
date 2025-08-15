@@ -24,9 +24,8 @@ Run autorization test case
 ```npm
 npx playwright test tests/tests/login.spec.ts
 ```
-create env with
+create env with valid user 
 ```
-BASIC_AUTH_URL
 LOGIN
 PASSWORD
 ```
