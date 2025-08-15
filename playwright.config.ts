@@ -3,15 +3,17 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
- */
+*/
 // import dotenv from 'dotenv';
+require('dotenv').config();
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
- */
+*/
 export default defineConfig({
+  // globalSetup: require.resolve('./setup/global-setup'),
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -39,18 +41,18 @@ export default defineConfig({
   projects: [
     {
       name: 'auth',
-      testMatch: ['**/tests/auth/**/*.spec.ts'],
-      use: { ...devices['Desktop Chrome'], storageState: undefined }
+      testMatch: '**/tests/authorization/**/*.spec.ts',
+      use: { ...devices['Desktop Chrome'] }
     },
     {
       name: 'guest',
-      testMatch: ['**/tests/guest/**/*.spec.ts'],
+      testMatch: '**/tests/guest/**/*.spec.ts',
       use: { ...devices['Desktop Chrome'], storageState: undefined }
     },
     {
       name: 'user',
-      testMatch: ['**/tests/user/**/*.spec.ts'],
-      use: { ...devices['Desktop Chrome'], storageState: 'storage/auth.json' }
+      testMatch: '**/tests/user/**/*.spec.ts',
+      use: { ...devices['Desktop Chrome'], storageState: 'storage/state.json' }
     }
 
 
