@@ -47,7 +47,7 @@ export default defineConfig({
     {
       name: 'guest',
       testMatch: '**/tests/guest/**/*.spec.ts',
-      use: { ...devices['Desktop Chrome'], storageState: undefined }
+      use: { ...devices['Desktop Chrome']}
     },
     {
       name: 'user',
