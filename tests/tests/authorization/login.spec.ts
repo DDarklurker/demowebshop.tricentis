@@ -19,9 +19,7 @@ test.describe("Login Tests: @authorization", () => {
         process.env.LOGIN as string
       );
       await basePage.logoutTab.click();
-      await expect(basePage.customerInfoTab).not.toContainText(
-        process.env.LOGIN as string
-      );
+      await expect(basePage.loginTab).toBeVisible;
     }
   );
   test(

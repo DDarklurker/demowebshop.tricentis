@@ -8,6 +8,7 @@ export class BasePage {
   readonly footerBasePage: FooterBasePage;
   readonly sidebarBasePage: SidebarBasePage;
   readonly page: Page;
+  readonly header: Locator;
   readonly basePageTab: Locator;
   readonly registerTab: Locator;
   readonly loginTab: Locator;
@@ -23,15 +24,18 @@ export class BasePage {
     this.topBasePage = new TopBasePage(page);
     this.footerBasePage = new FooterBasePage(page);
     this.sidebarBasePage = new SidebarBasePage(page);
+    this.header = page.locator("div.header");
     this.basePageTab = page.locator('a[href="/"]');
-    this.registerTab = page.locator('a[href="/register"]');
-    this.loginTab = page.locator('a[href="/login"]');
-    this.logoutTab = page.locator('a[href="/logout"]');
-    this.customerInfoTab = page.locator('a[href="/customer/info"]').first();
-    this.shoppingCartTab = page.locator('a[href="/cart"]');
-    this.wishlistTab = page.locator('a[href="/wishlist"]');
-    this.searchPlaceholder = page.locator('[id="small-searchterms"]');
-    this.searchButton = page.locator('[type="submit"]');
+    this.registerTab = this.header.locator('a[href="/register"]');
+    this.loginTab = this.header.locator('a[href="/login"]');
+    this.logoutTab = this.header.locator('a[href="/logout"]');
+    this.customerInfoTab = this.header
+      .locator('a[href="/customer/info"]')
+      .first();
+    this.shoppingCartTab = this.header.locator('a[href="/cart"]');
+    this.wishlistTab = this.header.locator('a[href="/wishlist"]');
+    this.searchPlaceholder = this.header.locator('[id="small-searchterms"]');
+    this.searchButton = this.header.locator('[type="submit"]');
   }
   async verifyBasePage() {
     await expect(this.shoppingCartTab).toBeVisible();
