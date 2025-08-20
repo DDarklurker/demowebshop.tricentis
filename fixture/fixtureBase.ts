@@ -1,4 +1,5 @@
 import {test as base, ConsoleMessage } from "@playwright/test";
+export { expect } from "@playwright/test";
 
 export const test = base.extend({
     page:async({page}, use) => {
