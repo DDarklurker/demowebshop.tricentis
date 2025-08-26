@@ -1,6 +1,6 @@
 import { chromium, type FullConfig } from "@playwright/test";
-import { LoginPage } from "../pages/login/loginPage";
-import { BasePage } from "../pages/base/basePage";
+import { LoginPage } from "../src/pages/login/loginPage";
+import { BasePage } from "../src/pages/basePage";
 
 async function globalSetup(config: FullConfig) {
   const { baseURL, storageState } = config.projects[0].use;
@@ -9,7 +9,6 @@ async function globalSetup(config: FullConfig) {
   const basePage = new BasePage(page);
   const loginPage = new LoginPage(page);
   await page.goto(baseURL!);
-  await basePage.verifyBasePage();
   await basePage.loginTab.click();
   await page.waitForURL("**/login");
   await loginPage.emailPlaceholder.fill(process.env.LOGIN as string);
