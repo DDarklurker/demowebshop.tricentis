@@ -5,7 +5,7 @@ test.describe("Recover Tests: @authorization", async () => {
   test.beforeEach(async ({ page, basePage, loginPage }) => {
     await page.goto("/");
     await basePage.verifyBasePage();
-    await basePage.loginTab.click();
+    await basePage.headerSection.loginTab.click();
     await expect(page).toHaveURL("/login");
     await loginPage.forgotPasswordTab.click();
     await expect(page).toHaveURL("/passwordrecovery");

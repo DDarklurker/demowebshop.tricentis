@@ -5,30 +5,32 @@ test.describe("Login Tests: @authorization", () => {
   test.beforeEach(async ({ page, basePage }) => {
     await page.goto("/");
     await basePage.verifyBasePage();
-    await basePage.loginTab.click();
+    await basePage.headerSection.loginTab.click();
     await expect(page).toHaveURL("/login");
   });
   test(
     "Test Case 1: Login User with correct email and password.",
     { tag: "@smoke" },
     async ({ basePage, loginPage }) => {
-      await loginPage.emailPlaceholder.fill(process.env.LOGIN as string);
-      await loginPage.passwordPlaceholder.fill(process.env.PASSWORD as string);
-      await loginPage.loginButton.click();
-      await expect(basePage.customerInfoTab).toContainText(
+      await loginPage.login(
+        process.env.LOGIN as string,
+        process.env.PASSWORD as string
+      );
+      await expect(basePage.headerSection.customerInfoTab).toContainText(
         process.env.LOGIN as string
       );
-      await basePage.logoutTab.click();
-      await expect(basePage.loginTab).toBeVisible;
+      await basePage.headerSection.logoutTab.click();
+      await expect(basePage.headerSection.loginTab).toBeVisible;
     }
   );
   test(
     "Test Case 2: Login User with incorrect password.",
     { tag: "@smoke" },
     async ({ loginPage }) => {
-      await loginPage.emailPlaceholder.fill(process.env.LOGIN as string);
-      await loginPage.passwordPlaceholder.fill(faker.internet.password());
-      await loginPage.loginButton.click();
+      await loginPage.login(
+        process.env.LOGIN as string,
+        faker.internet.password()
+      );
       await expect(loginPage.incorrectLoginMessage).toContainText(
         "The credentials provided are incorrect"
       );

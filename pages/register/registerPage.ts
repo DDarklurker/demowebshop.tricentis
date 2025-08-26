@@ -1,7 +1,7 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from "../base/basePage";
+import { CommonSections } from "../../sections/commonSections";
 
-export class RegisterPage extends BasePage {
+export class RegisterPage extends CommonSections {
   readonly genderManePoint: Locator;
   readonly genderFemalePoint: Locator;
   readonly firstNamePlaceholder: Locator;

@@ -1,6 +1,7 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { BasePage } from "../base/basePage";
-export class LoginPage extends BasePage {
+import { CommonSections } from "../../sections/commonSections";
+
+export class LoginPage extends CommonSections {
   readonly emailPlaceholder: Locator;
   readonly passwordPlaceholder: Locator;
   readonly loginButton: Locator;
@@ -9,6 +10,7 @@ export class LoginPage extends BasePage {
   readonly newCustomerButton: Locator;
   readonly incorrectLoginMessage: Locator;
   readonly validationEmailField: Locator;
+
   constructor(page: Page) {
     super(page);
     this.emailPlaceholder = page.locator("#Email");
@@ -25,5 +27,26 @@ export class LoginPage extends BasePage {
     this.validationEmailField = page.locator(
       "[class='field-validation-error']"
     );
+  }
+
+  async login(email: string, password: string) {
+    await this.emailPlaceholder.fill(email);
+    await this.passwordPlaceholder.fill(password);
+    await this.loginButton.click();
+  }
+
+  async verifyLoginPage() {
+    await this.headerSection.verifyHeaderSection();
+    await this.footerSection.verifyFooterSection();
+    await this.verifyLoginElements();
+  }
+
+  async verifyLoginElements() {
+    await expect(this.emailPlaceholder).toBeVisible();
+    await expect(this.passwordPlaceholder).toBeVisible();
+    await expect(this.loginButton).toBeVisible();
+    await expect(this.rememberMeCheckBox).toBeVisible();
+    await expect(this.forgotPasswordTab).toBeVisible();
+    await expect(this.newCustomerButton).toBeVisible();
   }
 }
