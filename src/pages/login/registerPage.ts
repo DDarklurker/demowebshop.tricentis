@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test";
-import { BasePage } from "../base/basePage";
+import { Locator } from "@playwright/test";
+import { BasePage } from "../basePage";
 
 export class RegisterPage extends BasePage {
   readonly genderManePoint: Locator;
@@ -11,7 +11,7 @@ export class RegisterPage extends BasePage {
   readonly confirmPasswordPlaceholder: Locator;
   readonly registerButton: Locator;
 
-  constructor(page: Page) {
+  constructor(page) {
     super(page);
     this.genderManePoint = page.locator("#gender-male");
     this.genderFemalePoint = page.locator("#gender-female");

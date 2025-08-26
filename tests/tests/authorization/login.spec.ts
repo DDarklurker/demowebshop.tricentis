@@ -1,34 +1,26 @@
-import { test, expect } from "../../../fixture/fixturePage";
+import { test, expect } from "../../../src/fixture/fixturePage";
 import { faker } from "@faker-js/faker";
-
+import pagesUrl from "../../../src/utils/pagesUrl";
+const login = process.env.LOGIN as string;
+const password = process.env.PASSWORD as string;
 test.describe("Login Tests: @authorization", () => {
   test.beforeEach(async ({ page, basePage }) => {
-    await page.goto("/");
-    await basePage.verifyBasePage();
-    await basePage.loginTab.click();
-    await expect(page).toHaveURL("/login");
+    await page.goto(pagesUrl.home);
+    await basePage.clickLoginTab();
   });
   test(
     "Test Case 1: Login User with correct email and password.",
     { tag: "@smoke" },
     async ({ basePage, loginPage }) => {
-      await loginPage.emailPlaceholder.fill(process.env.LOGIN as string);
-      await loginPage.passwordPlaceholder.fill(process.env.PASSWORD as string);
-      await loginPage.loginButton.click();
-      await expect(basePage.customerInfoTab).toContainText(
-        process.env.LOGIN as string
-      );
-      await basePage.logoutTab.click();
-      await expect(basePage.loginTab).toBeVisible;
+      await loginPage.logIn(login, password, pagesUrl.home);
+      await expect(basePage.customerInfoTab).toContainText(login);
     }
   );
   test(
     "Test Case 2: Login User with incorrect password.",
     { tag: "@smoke" },
     async ({ loginPage }) => {
-      await loginPage.emailPlaceholder.fill(process.env.LOGIN as string);
-      await loginPage.passwordPlaceholder.fill(faker.internet.password());
-      await loginPage.loginButton.click();
+      await loginPage.logIn(login, faker.internet.password(), pagesUrl.login);
       await expect(loginPage.incorrectLoginMessage).toContainText(
         "The credentials provided are incorrect"
       );
@@ -37,8 +29,11 @@ test.describe("Login Tests: @authorization", () => {
   test("Test Case 3:  Login User with incorrect email.", async ({
     loginPage,
   }) => {
-    await loginPage.emailPlaceholder.fill(faker.internet.email());
-    await loginPage.loginButton.click();
+    await loginPage.logIn(
+      faker.internet.email(),
+      faker.internet.password(),
+      pagesUrl.login
+    );
     await expect(loginPage.incorrectLoginMessage).toContainText(
       "No customer account found"
     );
@@ -46,8 +41,8 @@ test.describe("Login Tests: @authorization", () => {
   test("Test Case 4:  Login User with invalid email.", async ({
     loginPage,
   }) => {
-    await loginPage.emailPlaceholder.fill(faker.internet.username());
-    await loginPage.loginButton.click();
+    await loginPage.enterLogin(faker.internet.username());
+    await loginPage.clickLoginButton();
     await expect(loginPage.validationEmailField).toContainText(
       "Please enter a valid email address."
     );
