@@ -35,4 +35,8 @@ test.describe("Recover Tests: @authorization", async () => {
       "Enter your email"
     );
   });
+  test("Test Case 5: verify UI elements on page", async ({ recoverPage }) => {
+    await expect(recoverPage.emailPlaceholder).toBeVisible();
+    await expect(recoverPage.recoverButton).toBeVisible();
+  });
 });

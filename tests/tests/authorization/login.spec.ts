@@ -47,4 +47,20 @@ test.describe("Login Tests: @authorization", () => {
       "Please enter a valid email address."
     );
   });
+  test("Test Case 5: Click the 'Log in' button with no input", async ({
+    loginPage,
+  }) => {
+    await loginPage.clickLoginButton();
+    await expect(loginPage.incorrectLoginMessage).toContainText(
+      "No customer account found"
+    );
+  });
+  test("Test Case 6: verify UI elements on page", async ({ loginPage }) => {
+    await expect(loginPage.emailPlaceholder).toBeVisible();
+    await expect(loginPage.passwordPlaceholder).toBeVisible();
+    await expect(loginPage.rememberMeCheckBox).toBeVisible();
+    await expect(loginPage.forgotPasswordTab).toBeVisible();
+    await expect(loginPage.loginButton).toBeVisible();
+    await expect(loginPage.registerButton).toBeVisible();
+  });
 });
