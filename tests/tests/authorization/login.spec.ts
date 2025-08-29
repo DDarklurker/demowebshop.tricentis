@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 import pagesUrl from "../../../src/utils/pagesUrl";
 const login = process.env.LOGIN as string;
 const password = process.env.PASSWORD as string;
-test.describe("Login Tests: @authorization", () => {
+test.describe("Login Tests: @authorization", async () => {
   test.beforeEach(async ({ page, basePage }) => {
     await page.goto(pagesUrl.home);
     await basePage.clickLoginTab();
