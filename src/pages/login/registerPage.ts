@@ -1,7 +1,7 @@
 import { expect, Locator } from "@playwright/test";
 import { BasePage } from "../basePage";
 
-export type sexType = "male" | "female";
+export type genderType = "Male" | "Female";
 export class RegisterPage extends BasePage {
   readonly genderManePoint: Locator;
   readonly genderFemalePoint: Locator;
@@ -10,8 +10,13 @@ export class RegisterPage extends BasePage {
   readonly emailPlaceholder: Locator;
   readonly passwordPlaceholder: Locator;
   readonly confirmPasswordPlaceholder: Locator;
+  readonly firstNameErrorMessage: Locator;
+  readonly lastNameErrorMessage: Locator;
   readonly registerButton: Locator;
-
+  readonly emailErrorMessage: Locator;
+  readonly passwordErrorMessage: Locator;
+  readonly confirmPasswordErrorMessage: Locator;
+  readonly registerErrorMessage: Locator;
   constructor(page) {
     super(page);
     this.genderManePoint = page.locator("#gender-male");
@@ -22,12 +27,22 @@ export class RegisterPage extends BasePage {
     this.passwordPlaceholder = page.locator("#Password");
     this.confirmPasswordPlaceholder = page.locator("#ConfirmPassword");
     this.registerButton = page.locator("#register-button");
+    this.firstNameErrorMessage = page.locator("[data-valmsg-for='FirstName']");
+    this.lastNameErrorMessage = page.locator("[data-valmsg-for='LastName']");
+    this.emailErrorMessage = page.locator("[data-valmsg-for='Email']");
+    this.passwordErrorMessage = page.locator("[data-valmsg-for='Password']");
+    this.confirmPasswordErrorMessage = page.locator(
+      "[data-valmsg-for='ConfirmPassword']"
+    );
+    this.registerErrorMessage = page.locator(".validation-summary-errors");
   }
-  async clickGenderPoint(sex: sexType) {
-    if (sex === "male") {
+  async clickGenderPoint(gender: genderType) {
+    if (gender === "Male") {
       await this.genderManePoint.click();
-    } else {
+    } else if (gender === "Female") {
       await this.genderFemalePoint.click();
+    } else {
+      throw new Error("Invalid gender value");
     }
   }
   async enterFirstName(firstName: string) {
@@ -53,8 +68,8 @@ export class RegisterPage extends BasePage {
   async clickRegisterButton() {
     await this.registerButton.click();
   }
-  async register(
-    sex: sexType,
+  async registerUser(
+    sex: genderType,
     firstName: string,
     lastName: string,
     email: string,
@@ -67,7 +82,7 @@ export class RegisterPage extends BasePage {
     await this.enterEmail(email);
     await this.enterPassword(password);
     await this.enterConfirmPassword(confirmPassword);
-    await this.clickRegisterButton();
+    // await this.clickRegisterButton();
   }
   async verifyElements() {
     await expect(this.genderManePoint).toBeVisible();
@@ -76,5 +91,20 @@ export class RegisterPage extends BasePage {
     await expect(this.lastNamePlaceholder).toBeVisible();
     await expect(this.emailPlaceholder).toBeVisible();
     await expect(this.passwordPlaceholder).toBeVisible();
+  }
+  async verifyWithEmptyFields() {
+    await expect(this.firstNameErrorMessage).toContainText(
+      "First name is required."
+    );
+    await expect(this.lastNameErrorMessage).toContainText(
+      "Last name is required."
+    );
+    await expect(this.emailErrorMessage).toContainText("Email is required.");
+    await expect(this.passwordErrorMessage).toContainText(
+      "Password is required"
+    );
+    await expect(this.confirmPasswordErrorMessage).toContainText(
+      "Password is required"
+    );
   }
 }

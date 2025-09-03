@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "gender": "Male",
+    "firstname": "John",
+    "lastname": "Smith",
+    "email": "john@example.com",
+    "password": "qwerty123!",
+    "confirmpassword": "qwerty123!"
+  },
+  {
+    "id": 2,
+    "gender": "Female",
+    "firstname": "Elena",
+    "lastname": "Rish",
+    "email": "rish@example.com",
+    "password": "qazwsx123!",
+    "confirmpassword": "qazwsx123!"
+  },
+  {
+    "id": 3,
+    "gender": "Male",
+    "firstname": "test",
+    "lastname": "test",
+    "email": "testtest123@mail.com",
+    "password": "qwerty123",
+    "confirmpassword": "qwerty123"
+  }
+]
