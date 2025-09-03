@@ -90,4 +90,18 @@ test.describe("Register test: @register", () => {
       "password"
     );
   });
+  test("Verify password validation", async ({ registerPage }) => {
+    await registerPage.registerUser(
+      data.gender as genderType,
+      data.firstname,
+      data.lastname,
+      data.email,
+      faker.internet.password({ length: 3 }),
+      data.confirmpassword
+    );
+    await registerPage.clickRegisterButton();
+    await expect(registerPage.passwordErrorMessage).toContainText(
+      "The password should have at least 6 characters."
+    );
+  });
 });
