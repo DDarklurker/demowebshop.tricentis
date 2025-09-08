@@ -59,4 +59,8 @@ export class BasePage {
     await this.loginTab.click();
     await expect(this.page).toHaveURL(pagesUrl.login);
   }
+  async clickRegisterTab() {
+    await this.registerTab.click();
+    await expect(this.page).toHaveURL(pagesUrl.register);
+  }
 }
