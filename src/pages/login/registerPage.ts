@@ -1,8 +1,8 @@
 import { expect, Locator } from "@playwright/test";
-import { HomePage } from "../basePage";
+import { BasePage } from "../basePage";
 
 export type genderType = "Male" | "Female";
-export class RegisterPage extends HomePage {
+export class RegisterPage extends BasePage {
   readonly genderManePoint: Locator;
   readonly genderFemalePoint: Locator;
   readonly firstNamePlaceholder: Locator;

@@ -7,10 +7,10 @@ const data = users[2];
 test.describe("Register test: @register", () => {
   test.beforeEach(async ({ page, basePage }) => {
     await page.goto(pagesUrl.home);
-    await basePage.clickRegisterTab();
+    await basePage.headerComponent.clickRegisterTab();
   });
   test("Verify UI elements on page", async ({ registerPage }) => {
-    await registerPage.verifyBasePageElements();
+    await registerPage.verifyElements();
   });
 
   test("Register with incorrect confirm password", async ({ registerPage }) => {

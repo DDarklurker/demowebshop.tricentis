@@ -6,14 +6,16 @@ const password = process.env.PASSWORD as string;
 test.describe("Login Tests: @authorization", () => {
   test.beforeEach(async ({ page, basePage }) => {
     await page.goto(pagesUrl.home);
-    await basePage.clickLoginTab();
+    await basePage.headerComponent.clickLoginTab();
   });
   test(
     "Test Case 1: Login User with correct email and password.",
     { tag: "@smoke" },
     async ({ basePage, loginPage }) => {
       await loginPage.logIn(login, password, pagesUrl.home);
-      await expect(basePage.customerInfoTab).toContainText(login);
+      await expect(basePage.headerComponent.customerInfoTab).toContainText(
+        login
+      );
     }
   );
   test(
