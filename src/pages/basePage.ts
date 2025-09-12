@@ -1,66 +1,30 @@
 import { Locator, Page, expect } from "@playwright/test";
-import pagesUrl from "../utils/pagesUrl";
-
-export class BasePage {
-  readonly basePageTab: Locator;
-  readonly registerTab: Locator;
-  readonly loginTab: Locator;
-  readonly logoutTab: Locator;
-  readonly customerInfoTab: Locator;
-  readonly shoppingCartTab: Locator;
-  readonly wishlistTab: Locator;
-  readonly searchPlaceholder: Locator;
-  readonly searchButton: Locator;
-  readonly topMenu: Locator;
-  readonly bookTab: Locator;
-  readonly computerTab: Locator;
-  readonly electronicsTab: Locator;
-  readonly apparelTab: Locator;
-  readonly digitalDownloadsTab: Locator;
-  readonly jewelryTab: Locator;
-  readonly giftCardsTab: Locator;
-  readonly checkoutTab: Locator;
-  readonly orderDetailsTab: Locator;
-  readonly tricentisTab: Locator;
-
-  constructor(protected readonly page: Page) {
-    this.page = page;
-    this.basePageTab = page.locator('a[href="/"]');
-    this.registerTab = page.locator('div.header a[href="/register"]');
-    this.loginTab = page.locator('div.header a[href="/login"]');
-    this.logoutTab = page.locator('div.header a[href="/logout"]');
-    this.customerInfoTab = page
-      .locator('div.header a[href="/customer/info"]')
-      .first();
-    this.shoppingCartTab = page.locator('div.header a[href="/cart"]');
-    this.wishlistTab = page.locator('div.header a[href="/wishlist"]');
-    this.searchPlaceholder = page.locator(
-      'div.header [id="small-searchterms"]'
-    );
-    this.searchButton = page.locator('div.header [type="submit"]');
-    this.bookTab = page.locator('ul.top-menu a[href="/books"]');
-    this.computerTab = page.locator('ul.top-menu a[href="/computers"]');
-    this.electronicsTab = page.locator('ul.top-menu a[href="/electronics"]');
-    this.apparelTab = page.locator('ul.top-menu a[href="/apparel-shoes"]');
-    this.digitalDownloadsTab = page.locator(
-      'ul.top-menu a[href="/digital-downloads"]'
-    );
-    this.jewelryTab = page.locator('ul.top-menu a[href="/jewelry"]');
-    this.tricentisTab = page.locator('ul.top-menu a[href="/tricentis"]');
-    this.giftCardsTab = page.locator('ul.top-menu a[href="/gift-cards"]');
+import { CatalogComponent } from "../components/catalogComponent";
+import { HeaderComponent } from "../components/headerComponent";
+import { SearchComponent } from "../components/searchComponent";
+import { topMenuCatalogComponent } from "../components/topMenuCatalogComponent";
+export abstract class BasePage {
+  constructor(protected readonly page: Page) {}
+  async verifyUrl(pageUrl: string) {
+    await expect(this.page).toHaveURL(pageUrl);
   }
-  async verifyBasePageElements() {
-    await expect(this.shoppingCartTab).toBeVisible();
-    await expect(this.wishlistTab).toBeVisible();
-    await expect(this.searchPlaceholder).toBeVisible();
-    await expect(this.searchButton).toBeVisible();
+  async reloadPage() {
+    await this.page.reload();
   }
-  async clickLoginTab() {
-    await this.loginTab.click();
-    await expect(this.page).toHaveURL(pagesUrl.login);
+  async navigatePrevious() {
+    await this.page.goBack();
   }
-  async clickRegisterTab() {
-    await this.registerTab.click();
-    await expect(this.page).toHaveURL(pagesUrl.register);
+}
+export class HomePage extends BasePage {
+  readonly catalogComponent: CatalogComponent;
+  readonly headerComponent: HeaderComponent;
+  readonly searchComponent: SearchComponent;
+  readonly topMenuCatalogComponent: topMenuCatalogComponent;
+  constructor(page) {
+    super(page);
+    this.catalogComponent = new CatalogComponent(page);
+    this.headerComponent = new HeaderComponent(page);
+    this.searchComponent = new SearchComponent(page);
+    this.topMenuCatalogComponent = new topMenuCatalogComponent(page);
   }
 }

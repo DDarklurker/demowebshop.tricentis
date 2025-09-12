@@ -3,11 +3,11 @@ export { expect } from "./fixtureBase";
 import { LoginPage } from "../pages/login/loginPage";
 import { RecoverPage } from "../pages/login/recoverPage";
 import { TLoginPage } from "./types";
-import { BasePage } from "../pages/basePage";
+import { HomePage } from "../pages/basePage";
 import { RegisterPage } from "../pages/login/registerPage";
 export const test = base.extend<TLoginPage>({
   basePage: ({ page }, use) => {
-    const basePage = new BasePage(page);
+    const basePage = new HomePage(page);
     use(basePage);
   },
   loginPage: ({ page }, use) => {
