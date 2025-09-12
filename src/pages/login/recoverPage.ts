@@ -1,6 +1,6 @@
 import { expect, Locator } from "@playwright/test";
-import { HomePage } from "../basePage";
-export class RecoverPage extends HomePage {
+import { BasePage } from "../basePage";
+export class RecoverPage extends BasePage {
   readonly emailPlaceholder: Locator;
   readonly recoverButton: Locator;
   readonly validationMessage: Locator;
