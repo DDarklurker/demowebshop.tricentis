@@ -6,8 +6,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "playwright test && playwright merge-reports --reporter html ./test-results ./playwright-report",
-    "test:local": "playwright test && playwright merge-reports --reporter html ./test-results ./playwright-report && playwright show-report",
+    "test": "playwright test && playwright merge-reports --reporter html ./test-results",
+    "test:local": "playwright test && playwright merge-reports --reporter html ./test-results && playwright show-report",
     "test:debug": "playwright test --debug"
   },
   "repository": {
