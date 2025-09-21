@@ -1,0 +1,63 @@
+name: Quick Test Run
+
+on:
+  schedule:
+    # Запуск щодня о 10:00 UTC (12:00 за київським часом)
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+    inputs:
+      project:
+        description: "Test project to run"
+        required: false
+        default: "auth"
+        type: choice
+        options:
+          - auth
+          - guest
+          - user
+
+jobs:
+  quick-test:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run quick tests
+        run: |
+          if [ "${{ github.event.inputs.project }}" != "" ]; then
+            npx playwright test --project=${{ github.event.inputs.project }}
+          else
+            npx playwright test --project=auth
+          fi
+        env:
+          CI: true
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quick-test-results
+          path: test-results/
+          retention-days: 7
+
+      - name: Test summary
+        if: always()
+        run: |
+          echo "🚀 Quick test run completed!"
+          echo "Project: ${{ github.event.inputs.project || 'auth' }}"
+          echo "Time: $(date)"
