@@ -44,13 +44,8 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
     {
-      name: "guest",
-      testMatch: "**/tests/guest/**/*.spec.ts",
-      use: { ...devices["Desktop Chrome"] },
-    },
-    {
       name: "user",
-      testMatch: "**/tests/user/**/*.spec.ts",
+      testMatch: "**/tests/home/**/*.spec.ts",
       use: { ...devices["Desktop Chrome"], storageState: "storage/state.json" },
     },
 
