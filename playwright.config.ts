@@ -45,7 +45,7 @@ export default defineConfig({
     },
     {
       name: "user",
-      testMatch: "**/tests/home/**/*.spec.ts",
+      testMatch: "**/tests/card/**/*.spec.ts",
       use: { ...devices["Desktop Chrome"], storageState: "storage/state.json" },
     },
 

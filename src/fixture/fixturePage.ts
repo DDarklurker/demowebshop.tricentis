@@ -6,19 +6,19 @@ import { TLoginPage } from "./types";
 import { HomePage } from "../pages/basePage";
 import { RegisterPage } from "../pages/login/registerPage";
 export const test = base.extend<TLoginPage>({
-  basePage: ({ page }, use) => {
+  basePage: async ({ page }, use) => {
     const basePage = new HomePage(page);
     use(basePage);
   },
-  loginPage: ({ page }, use) => {
+  loginPage: async ({ page }, use) => {
     const loginPage = new LoginPage(page);
     use(loginPage);
   },
-  recoverPage: ({ page }, use) => {
+  recoverPage: async ({ page }, use) => {
     const recoverPage = new RecoverPage(page);
     use(recoverPage);
   },
-  registerPage: ({ page }, use) => {
+  registerPage: async ({ page }, use) => {
     const registerPage = new RegisterPage(page);
     use(registerPage);
   },
