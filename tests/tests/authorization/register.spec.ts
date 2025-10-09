@@ -4,16 +4,16 @@ import pagesUrl from "../../../src/utils/pagesUrl";
 import users from "../../data/users.json";
 import { faker } from "@faker-js/faker";
 const data = users[2];
-test.describe("Register test: @register", () => {
+test.describe("Register", () => {
   test.beforeEach(async ({ page, basePage }) => {
     await page.goto(pagesUrl.home);
-    await basePage.clickRegisterTab();
+    await basePage.headerComponent.clickRegisterTab();
   });
   test("Verify UI elements on page", async ({ registerPage }) => {
-    await registerPage.verifyBasePageElements();
+    await registerPage.verifyElements();
   });
 
-  test("Register with incorrect confirm password", async ({ registerPage }) => {
+  test("@validation: Password ≠ Confirm password", async ({ registerPage }) => {
     await registerPage.registerUser(
       data.gender as genderType,
       data.firstname,
@@ -27,7 +27,7 @@ test.describe("Register test: @register", () => {
       "The password and confirmation password do not match."
     );
   });
-  test("Register with existing email", async ({ registerPage }) => {
+  test("@regression: Email already exists", async ({ registerPage }) => {
     await registerPage.registerUser(
       data.gender as genderType,
       data.firstname,
@@ -42,16 +42,30 @@ test.describe("Register test: @register", () => {
     );
   });
 
-  test("Register with empty fields", async ({ page, registerPage }) => {
+  test("@validation: Empty fields -> required errors", async ({
+    page,
+    registerPage,
+  }) => {
     await registerPage.clickRegisterButton();
     await expect(page).toHaveURL(pagesUrl.register);
     await registerPage.verifyWithEmptyFields();
   });
-  test("Register with incorrect email.", async ({ registerPage }) => {
-    await registerPage.enterEmail(faker.internet.username());
-    await registerPage.clickRegisterButton();
-    await expect(registerPage.emailErrorMessage).toContainText("Wrong email");
-  });
+
+  const invalidEmails = [
+    { email: "invalidemail", description: "without @ symbol" },
+    { email: "test@", description: "without domain" },
+    { email: "test @example.com", description: "with spaces" },
+  ];
+
+  for (const { email, description } of invalidEmails) {
+    test(`@validation: Invalid email formats - ${description}`, async ({
+      registerPage,
+    }) => {
+      await registerPage.enterEmail(email);
+      await registerPage.clickRegisterButton();
+      await expect(registerPage.emailErrorMessage).toContainText("Wrong email");
+    });
+  }
 
   for (const {
     id,
@@ -62,7 +76,9 @@ test.describe("Register test: @register", () => {
     password,
     confirmpassword,
   } of users) {
-    test(`${id}`, async ({ registerPage }) => {
+    test(`@smoke: Successfully registration (parameterized) - ${id}`, async ({
+      registerPage,
+    }) => {
       await registerPage.registerUser(
         gender as genderType,
         firstname,
@@ -73,24 +89,28 @@ test.describe("Register test: @register", () => {
       );
     });
   }
-  test("Check Male gender checkbox", async ({ registerPage }) => {
+  test("@functional: Gender radio buttons mutual exclusivity - Male selected", async ({
+    registerPage,
+  }) => {
     await registerPage.genderManePoint.click();
     await expect(registerPage.genderManePoint).toBeChecked();
     await expect(registerPage.genderFemalePoint).not.toBeChecked();
   });
-  test("Check Female gender checkbox", async ({ registerPage }) => {
+  test("@functional: Gender radio buttons mutual exclusivity - Female selected", async ({
+    registerPage,
+  }) => {
     await registerPage.genderFemalePoint.click();
     await expect(registerPage.genderFemalePoint).toBeChecked();
     await expect(registerPage.genderManePoint).not.toBeChecked();
   });
-  test("Password is invisible", async ({ registerPage }) => {
+  test("@functional: Password field is hidden", async ({ registerPage }) => {
     await registerPage.passwordPlaceholder.fill(data.password);
     await expect(registerPage.passwordPlaceholder).toHaveAttribute(
       "type",
       "password"
     );
   });
-  test("Verify password validation", async ({ registerPage }) => {
+  test("@security: Password strength validation", async ({ registerPage }) => {
     await registerPage.registerUser(
       data.gender as genderType,
       data.firstname,

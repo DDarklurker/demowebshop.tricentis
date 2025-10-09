@@ -6,7 +6,7 @@ const login = process.env.LOGIN as string;
 test.describe("Recover Tests: @authorization", async () => {
   test.beforeEach(async ({ page, basePage, loginPage }) => {
     await page.goto(pagesUrl.home);
-    await basePage.clickLoginTab();
+    await basePage.headerComponent.clickLoginTab();
     await loginPage.clickForgotPassword();
   });
   test(
