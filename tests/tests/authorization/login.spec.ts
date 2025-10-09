@@ -29,7 +29,7 @@ test.describe("Login Tests: @authorization", () => {
     }
   );
   test("Test Case 3:  Login User with incorrect email.", async ({
-    loginPage,
+    loginPage
   }) => {
     await loginPage.logIn(
       faker.internet.email(),
@@ -41,7 +41,7 @@ test.describe("Login Tests: @authorization", () => {
     );
   });
   test("Test Case 4:  Login User with invalid email.", async ({
-    loginPage,
+    loginPage
   }) => {
     await loginPage.enterLogin(faker.internet.username());
     await loginPage.clickLoginButton();
@@ -50,7 +50,7 @@ test.describe("Login Tests: @authorization", () => {
     );
   });
   test("Test Case 5: Click the 'Log in' button with no input", async ({
-    loginPage,
+    loginPage
   }) => {
     await loginPage.clickLoginButton();
     await expect(loginPage.incorrectLoginMessage).toContainText(
