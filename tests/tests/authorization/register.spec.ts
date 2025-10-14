@@ -44,7 +44,7 @@ test.describe("Register", () => {
 
   test("@validation: Empty fields -> required errors", async ({
     page,
-    registerPage,
+    registerPage
   }) => {
     await registerPage.clickRegisterButton();
     await expect(page).toHaveURL(pagesUrl.register);
@@ -54,12 +54,12 @@ test.describe("Register", () => {
   const invalidEmails = [
     { email: "invalidemail", description: "without @ symbol" },
     { email: "test@", description: "without domain" },
-    { email: "test @example.com", description: "with spaces" },
+    { email: "test @example.com", description: "with spaces" }
   ];
 
   for (const { email, description } of invalidEmails) {
     test(`@validation: Invalid email formats - ${description}`, async ({
-      registerPage,
+      registerPage
     }) => {
       await registerPage.enterEmail(email);
       await registerPage.clickRegisterButton();
@@ -74,10 +74,10 @@ test.describe("Register", () => {
     lastname,
     email,
     password,
-    confirmpassword,
+    confirmpassword
   } of users) {
     test(`@smoke: Successfully registration (parameterized) - ${id}`, async ({
-      registerPage,
+      registerPage
     }) => {
       await registerPage.registerUser(
         gender as genderType,
@@ -90,14 +90,14 @@ test.describe("Register", () => {
     });
   }
   test("@functional: Gender radio buttons mutual exclusivity - Male selected", async ({
-    registerPage,
+    registerPage
   }) => {
     await registerPage.genderManePoint.click();
     await expect(registerPage.genderManePoint).toBeChecked();
     await expect(registerPage.genderFemalePoint).not.toBeChecked();
   });
   test("@functional: Gender radio buttons mutual exclusivity - Female selected", async ({
-    registerPage,
+    registerPage
   }) => {
     await registerPage.genderFemalePoint.click();
     await expect(registerPage.genderFemalePoint).toBeChecked();
@@ -123,5 +123,29 @@ test.describe("Register", () => {
     await expect(registerPage.passwordErrorMessage).toContainText(
       "The password should have at least 6 characters."
     );
+  });
+  test.only("@mock: Successful registration", async ({
+    page,
+    registerPage
+  }) => {
+    await page.route("**/register", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "text/html",
+        body: `DONE`
+      });
+    });
+
+    await registerPage.registerUser(
+      data.gender as genderType,
+      data.firstname,
+      data.lastname,
+      data.email,
+      data.password,
+      data.confirmpassword
+    );
+    await registerPage.clickRegisterButton();
+
+    await expect(page.getByText("DONE")).toBeVisible();
   });
 });
