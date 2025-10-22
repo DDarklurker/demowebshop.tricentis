@@ -1,29 +1,19 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect } from "@playwright/test";
 import pagesUrl from "../utils/pagesUrl";
 import { SearchComponent } from "./searchComponent";
+import { Component } from "../abstract/abstract";
 
-export class HeaderComponent {
-  readonly logoTab: Locator;
-  readonly registerTab: Locator;
-  readonly loginTab: Locator;
-  readonly logoutTab: Locator;
-  readonly customerInfoTab: Locator;
-  readonly shoppingCartTab: Locator;
-  readonly wishlistTab: Locator;
-  readonly searchComponent: SearchComponent;
-  constructor(protected readonly page: Page) {
-    this.page = page;
-    this.searchComponent = new SearchComponent(page);
-    this.logoTab = page.locator('a[href="/"]');
-    this.registerTab = page.locator('div.header a[href="/register"]');
-    this.loginTab = page.locator('div.header a[href="/login"]');
-    this.logoutTab = page.locator('div.header a[href="/logout"]');
-    this.customerInfoTab = page
-      .locator('div.header a[href="/customer/info"]')
-      .first();
-    this.shoppingCartTab = page.locator('div.header a[href="/cart"]');
-    this.wishlistTab = page.locator('div.header a[href="/wishlist"]');
-  }
+export class HeaderComponent extends Component {
+  readonly searchComponent = new SearchComponent(this.page);
+  readonly logoTab = this.page.locator('a[href="/"]');
+  readonly registerTab = this.page.locator('div.header a[href="/register"]');
+  readonly loginTab = this.page.locator('div.header a[href="/login"]');
+  readonly logoutTab = this.page.locator('div.header a[href="/logout"]');
+  readonly customerInfoTab = this.page
+    .locator('div.header a[href="/customer/info"]')
+    .first();
+  readonly shoppingCartTab = this.page.locator('div.header a[href="/cart"]');
+  readonly wishlistTab = this.page.locator('div.header a[href="/wishlist"]');
   async clickShoppingCartTab() {
     await this.shoppingCartTab.click();
     await expect(this.page).toHaveURL(pagesUrl.cart);

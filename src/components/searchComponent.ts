@@ -1,14 +1,11 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect } from "@playwright/test";
+import { Component } from "../abstract/abstract";
 
-export class SearchComponent {
-  private searchPlaceholder: Locator;
-  private searchButton: Locator;
-  constructor(protected readonly page: Page) {
-    this.searchPlaceholder = page.locator(
-      'div.header [id="small-searchterms"]'
-    );
-    this.searchButton = page.locator('div.header [type="submit"]');
-  }
+export class SearchComponent extends Component {
+  readonly searchPlaceholder = this.page.locator(
+    'div.header [id="small-searchterms"]'
+  );
+  readonly searchButton = this.page.locator('div.header [type="submit"]');
   async clickSearchButton() {
     await this.searchButton.click();
   }
