@@ -1,41 +1,32 @@
-import { expect, Locator } from "@playwright/test";
-import { BasePage } from "../basePage";
+import { expect } from "@playwright/test";
+import { AbstractPage } from "../../abstract/abstract";
 
 export type genderType = "Male" | "Female";
-export class RegisterPage extends BasePage {
-  readonly genderManePoint: Locator;
-  readonly genderFemalePoint: Locator;
-  readonly firstNamePlaceholder: Locator;
-  readonly lastNamePlaceholder: Locator;
-  readonly emailPlaceholder: Locator;
-  readonly passwordPlaceholder: Locator;
-  readonly confirmPasswordPlaceholder: Locator;
-  readonly firstNameErrorMessage: Locator;
-  readonly lastNameErrorMessage: Locator;
-  readonly registerButton: Locator;
-  readonly emailErrorMessage: Locator;
-  readonly passwordErrorMessage: Locator;
-  readonly confirmPasswordErrorMessage: Locator;
-  readonly registerErrorMessage: Locator;
-  constructor(page) {
-    super(page);
-    this.genderManePoint = page.locator("#gender-male");
-    this.genderFemalePoint = page.locator("#gender-female");
-    this.firstNamePlaceholder = page.locator("#FirstName");
-    this.lastNamePlaceholder = page.locator("#LastName");
-    this.emailPlaceholder = page.locator("#Email");
-    this.passwordPlaceholder = page.locator("#Password");
-    this.confirmPasswordPlaceholder = page.locator("#ConfirmPassword");
-    this.registerButton = page.locator("#register-button");
-    this.firstNameErrorMessage = page.locator("[data-valmsg-for='FirstName']");
-    this.lastNameErrorMessage = page.locator("[data-valmsg-for='LastName']");
-    this.emailErrorMessage = page.locator("[data-valmsg-for='Email']");
-    this.passwordErrorMessage = page.locator("[data-valmsg-for='Password']");
-    this.confirmPasswordErrorMessage = page.locator(
-      "[data-valmsg-for='ConfirmPassword']"
-    );
-    this.registerErrorMessage = page.locator(".validation-summary-errors");
-  }
+export class RegisterPage extends AbstractPage {
+  readonly genderManePoint = this.page.locator("#gender-male");
+  readonly genderFemalePoint = this.page.locator("#gender-female");
+  readonly firstNamePlaceholder = this.page.locator("#FirstName");
+  readonly lastNamePlaceholder = this.page.locator("#LastName");
+  readonly emailPlaceholder = this.page.locator("#Email");
+  readonly passwordPlaceholder = this.page.locator("#Password");
+  readonly confirmPasswordPlaceholder = this.page.locator("#ConfirmPassword");
+  readonly registerButton = this.page.locator("#register-button");
+  readonly firstNameErrorMessage = this.page.locator(
+    "[data-valmsg-for='FirstName']"
+  );
+  readonly lastNameErrorMessage = this.page.locator(
+    "[data-valmsg-for='LastName']"
+  );
+  readonly emailErrorMessage = this.page.locator("[data-valmsg-for='Email']");
+  readonly passwordErrorMessage = this.page.locator(
+    "[data-valmsg-for='Password']"
+  );
+  readonly confirmPasswordErrorMessage = this.page.locator(
+    "[data-valmsg-for='ConfirmPassword']"
+  );
+  readonly registerErrorMessage = this.page.locator(
+    ".validation-summary-errors"
+  );
   async clickGenderPoint(gender: genderType) {
     if (gender === "Male") {
       await this.genderManePoint.click();

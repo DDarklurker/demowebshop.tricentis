@@ -1,40 +1,28 @@
-import { Locator, Page } from "@playwright/test";
-import { BasePage } from "../basePage";
+import { AbstractPage } from "../../abstract/abstract";
 
-export class shoppingCartPage extends BasePage {
-  readonly checkoutButton: Locator;
-  readonly itemQuantityText: Locator;
-  readonly removeCheckbox: Locator;
-  readonly cartItem: Locator;
-  readonly editItemButton: Locator;
-  readonly continueShopButton: Locator;
-  readonly updateCartButton: Locator;
-  readonly termSofserviceCheckbox: Locator;
-  readonly discountCodePlaceholder: Locator;
-  readonly discountApplyButton: Locator;
-  readonly giftCardPlaceholder: Locator;
-  readonly giftApplyButton: Locator;
-  readonly shippingCountry: Locator;
-  readonly shippingState: Locator;
-  constructor(page: Page) {
-    super(page);
-    this.cartItem = page.locator(' [class="cart-item-row"]');
-    this.removeCheckbox = page.locator('[type="checkbox"]');
-    this.itemQuantityText = this.cartItem.locator(' [name*="itemquantity"]');
-    this.checkoutButton = page.locator("#checkout");
-    this.continueShopButton = page.locator('input[name="continueshopping"]');
-    this.updateCartButton = page.locator("input[name='updatecart']");
-    this.editItemButton = page.locator("[class=edit-item]");
-    this.termSofserviceCheckbox = page.locator("#termsofservice");
-    this.discountCodePlaceholder = page.locator(
-      "input[name=discountcouponcode]"
-    );
-    this.discountApplyButton = page.locator(
-      "input[name=applydiscountcouponcode]"
-    );
-    this.giftCardPlaceholder = page.locator("input[name=giftcardcouponcode]");
-    this.giftApplyButton = page.locator("input[name=applygiftcouponcode]");
-    this.shippingCountry = page.locator("#CountryId");
-    this.shippingState = page.locator("#StateProvinceId");
-  }
+export class shoppingCartPage extends AbstractPage {
+  readonly cartItem = this.page.locator(' [class="cart-item-row"]');
+  readonly removeCheckbox = this.page.locator('[type="checkbox"]');
+  readonly itemQuantityText = this.cartItem.locator(' [name*="itemquantity"]');
+  readonly checkoutButton = this.page.locator("#checkout");
+  readonly continueShopButton = this.page.locator(
+    'input[name="continueshopping"]'
+  );
+  readonly updateCartButton = this.page.locator("input[name='updatecart']");
+  readonly editItemButton = this.page.locator("[class=edit-item]");
+  readonly termSofserviceCheckbox = this.page.locator("#termsofservice");
+  readonly discountCodePlaceholder = this.page.locator(
+    "input[name=discountcouponcode]"
+  );
+  readonly discountApplyButton = this.page.locator(
+    "input[name=applydiscountcouponcode]"
+  );
+  readonly giftCardPlaceholder = this.page.locator(
+    "input[name=giftcardcouponcode]"
+  );
+  readonly giftApplyButton = this.page.locator(
+    "input[name=applygiftcouponcode]"
+  );
+  readonly shippingCountry = this.page.locator("#CountryId");
+  readonly shippingState = this.page.locator("#StateProvinceId");
 }

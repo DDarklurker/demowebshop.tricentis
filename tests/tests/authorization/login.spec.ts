@@ -1,19 +1,20 @@
-import { test, expect } from "../../../src/fixture/fixturePage";
+import { test } from "../../../src/fixture/fixturePage";
 import { faker } from "@faker-js/faker";
 import pagesUrl from "../../../src/utils/pagesUrl";
+import { expect } from "@playwright/test";
 const login = process.env.LOGIN as string;
 const password = process.env.PASSWORD as string;
 test.describe("Login Tests: @authorization", () => {
-  test.beforeEach(async ({ page, basePage }) => {
-    await page.goto(pagesUrl.home);
-    await basePage.headerComponent.clickLoginTab();
+  test.beforeEach(async ({ app: { homePage } }) => {
+    await homePage.open(pagesUrl.home);
+    await homePage.headerComponent.clickLoginTab();
   });
   test(
     "Test Case 1: Login User with correct email and password.",
     { tag: "@smoke" },
-    async ({ basePage, loginPage }) => {
+    async ({ app: { homePage, loginPage } }) => {
       await loginPage.logIn(login, password, pagesUrl.home);
-      await expect(basePage.headerComponent.customerInfoTab).toContainText(
+      await expect(homePage.headerComponent.customerInfoTab).toContainText(
         login
       );
     }
@@ -21,7 +22,7 @@ test.describe("Login Tests: @authorization", () => {
   test(
     "Test Case 2: Login User with incorrect password.",
     { tag: "@smoke" },
-    async ({ loginPage }) => {
+    async ({ app: { loginPage } }) => {
       await loginPage.logIn(login, faker.internet.password(), pagesUrl.login);
       await expect(loginPage.incorrectLoginMessage).toContainText(
         "The credentials provided are incorrect"
@@ -29,7 +30,7 @@ test.describe("Login Tests: @authorization", () => {
     }
   );
   test("Test Case 3:  Login User with incorrect email.", async ({
-    loginPage
+    app: { loginPage }
   }) => {
     await loginPage.logIn(
       faker.internet.email(),
@@ -41,7 +42,7 @@ test.describe("Login Tests: @authorization", () => {
     );
   });
   test("Test Case 4:  Login User with invalid email.", async ({
-    loginPage
+    app: { loginPage }
   }) => {
     await loginPage.enterLogin(faker.internet.username());
     await loginPage.clickLoginButton();
@@ -50,14 +51,16 @@ test.describe("Login Tests: @authorization", () => {
     );
   });
   test("Test Case 5: Click the 'Log in' button with no input", async ({
-    loginPage
+    app: { loginPage }
   }) => {
     await loginPage.clickLoginButton();
     await expect(loginPage.incorrectLoginMessage).toContainText(
       "No customer account found"
     );
   });
-  test("Test Case 6: verify UI elements on page", async ({ loginPage }) => {
+  test("Test Case 6: verify UI elements on page", async ({
+    app: { loginPage }
+  }) => {
     await expect(loginPage.emailPlaceholder).toBeVisible();
     await expect(loginPage.passwordPlaceholder).toBeVisible();
     await expect(loginPage.rememberMeCheckBox).toBeVisible();
