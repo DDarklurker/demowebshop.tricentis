@@ -133,7 +133,7 @@ test.describe("Register", () => {
       "The password should have at least 6 characters."
     );
   });
-  test.only("@mock: Successful registration", async ({
+  test("@mock: Successful registration", async ({
     app: { registerPage },
     page
   }) => {
