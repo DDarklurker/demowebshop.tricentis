@@ -19,4 +19,7 @@ export class HomePage extends AbstractPage {
   async navigatePrevious() {
     await this.page.goBack();
   }
+  async open(url: string) {
+    await this.page.goto(url);
+  }
 }

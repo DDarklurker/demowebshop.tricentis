@@ -1,6 +1,4 @@
 import { test as base, ConsoleMessage } from "@playwright/test";
-export { expect } from "../abstract/abstract";
-
 export const test = base.extend({
   page: async ({ page }, use) => {
     await page.setViewportSize({ width: 1920, height: 1080 });

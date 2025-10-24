@@ -1,6 +1,4 @@
-import { Locator, Page } from "@playwright/test";
 import { Component } from "../abstract/abstract";
-
 export class CatalogComponent extends Component {
   readonly booksTab = this.page.locator(`div.block a[href="/books"]`);
   readonly computersTab = this.page.locator(`div.block a[href="/computers"]`);

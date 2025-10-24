@@ -1,22 +1,12 @@
-import { Locator } from "@playwright/test";
-import { BasePage } from "../basePage";
+import { AbstractPage } from "../../abstract/abstract";
 
-export class Wishlist extends BasePage {
-  readonly wishlistContent: Locator;
-  readonly removeCheckbox: Locator;
-  readonly addToCartCheckbox: Locator;
-  readonly updateWishlistButton: Locator;
-  readonly shareLinkWishProduct: Locator;
-  readonly quantityWishProduct: Locator;
-  constructor(page) {
-    super(page);
-    this.wishlistContent = page.locator(".wishlist-content");
-    this.removeCheckbox = page.locator("input[name='removefromcart']");
-    this.updateWishlistButton = page.locator("input[name='updatecart']");
-    this.addToCartCheckbox = page.locator("input[name='addtocart']");
-    this.shareLinkWishProduct = page.locator("a.share-link");
-    this.quantityWishProduct = page.locator("input.qty-input.valid");
-  }
+export class Wishlist extends AbstractPage {
+  readonly wishlistContent = this.page.locator(".wishlist-content");
+  readonly removeCheckbox = this.page.locator("input[name='removefromcart']");
+  readonly updateWishlistButton = this.page.locator("input[name='updatecart']");
+  readonly addToCartCheckbox = this.page.locator("input[name='addtocart']");
+  readonly shareLinkWishProduct = this.page.locator("a.share-link");
+  readonly quantityWishProduct = this.page.locator("input.qty-input.valid");
   async clickShareLinkWishProduct() {
     await this.shareLinkWishProduct.click();
   }
