@@ -12,28 +12,28 @@
 ---
 
 **Test Case 1: Recovere with correct email**
-<br> Automated: Yes.
+<br> Automated: Yes.✅
 
 1. Enter correct email.
 2. Click on 'Recover' button.
 3. Verify that 'Email with instructions has been sent to you.' is visible.
 
 **Test Case 2: Recovere with incorrect email**.
-<br> Automated: Yes.
+<br> Automated: Yes.✅
 
 1. Enter correct email.
 2. Click on 'Recover' button.
 3. Verify that 'Email not found.' is visible.
 
 **Test Case 3: Recovere with invalid email**.
-<br> Automated: Yes.
+<br> Automated: Yes.✅
 
 1. Enter correct email.
 2. Click on 'Recover' button.
 3. Verify that 'Wrong email' is visible.
 
 **Test Case 4: Recovere with empty email**.
-<br> Automated: Yes.
+<br> Automated: Yes.✅
 
 1. Click on 'Recover' button.
 2. Verify that 'Enter your email' is visible.
