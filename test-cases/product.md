@@ -18,15 +18,15 @@
 **Test Case 2 @ui: Product list card elements in category**
 <br> Automated: Yes.
 
-1. Open any category with products.
+1. Open any category with products (e.g., `Featured products`).
 2. For each product card verify: image, name (link), price, `Add to cart`, `Add to wishlist`, `Add to compare` (if available), rating (if present).
    Result: All key elements are present and clickable.
 
 **Test Case 3 @navigation: Navigate to Product Details Page (PDP) from list**
 <br> Automated: Yes.
 
-1. Click the product name in the list.
-   Result: PDP opens with correct URL, title, and breadcrumbs.
+1. Click the product name in the list (e.g., `Featured products`).
+   Result: PDP open with correct URL, title, and breadcrumbs.
 
 **Test Case 4 @ui: PDP elements**
 <br> Automated: Yes.

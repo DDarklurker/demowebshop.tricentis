@@ -1,6 +1,6 @@
 import { AbstractPage } from "../../abstract/abstract";
 
-export class shoppingCartPage extends AbstractPage {
+export class ShoppingCartPage extends AbstractPage {
   readonly cartItem = this.page.locator(' [class="cart-item-row"]');
   readonly removeCheckbox = this.page.locator('[type="checkbox"]');
   readonly itemQuantityText = this.cartItem.locator(' [name*="itemquantity"]');

@@ -1,10 +1,10 @@
-import { AbstractPage } from "../../abstract/abstract";
+import { AbstractPage, PageHolder } from "../../abstract/abstract";
 
-abstract class Product extends AbstractPage {
+export class Product extends PageHolder {
   readonly productRating = this.page.locator(
     '[class="product-review-box"]  div.rating'
   );
-  readonly emailAFriendButton = this.page.locator(
-    'input[class*="email-a-friend-button"]'
-  );
+  async openProductDetailsByName(name: string) {
+    await this.page.getByRole("link", { name: name, exact: true }).click();
+  }
 }
