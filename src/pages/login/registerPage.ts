@@ -3,6 +3,7 @@ import { AbstractPage } from "../../abstract/abstract";
 
 export type genderType = "Male" | "Female";
 export class RegisterPage extends AbstractPage {
+  readonly url = "/register";
   readonly genderManePoint = this.page.locator("#gender-male");
   readonly genderFemalePoint = this.page.locator("#gender-female");
   readonly firstNamePlaceholder = this.page.locator("#FirstName");

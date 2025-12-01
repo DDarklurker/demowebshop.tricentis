@@ -1,6 +1,7 @@
 import { AbstractPage } from "../../abstract/abstract";
 
 export class Wishlist extends AbstractPage {
+  url?: string | undefined;
   readonly wishlistContent = this.page.locator(".wishlist-content");
   readonly removeCheckbox = this.page.locator("input[name='removefromcart']");
   readonly updateWishlistButton = this.page.locator("input[name='updatecart']");

@@ -2,6 +2,7 @@ import { expect } from "@playwright/test";
 import { AbstractPage } from "../../abstract/abstract";
 import pagesUrl from "../../utils/pagesUrl";
 export class LoginPage extends AbstractPage {
+  url?: string | undefined;
   readonly emailPlaceholder = this.page.locator("#Email");
   readonly passwordPlaceholder = this.page.locator("#Password");
   readonly loginButton = this.page.locator(
