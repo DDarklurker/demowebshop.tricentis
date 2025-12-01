@@ -5,5 +5,5 @@ export default {
   recover: "/passwordrecovery",
   profile: "/customer/info",
   wishlist: "/wishlist",
-  cart: "/cart",
+  cart: "/cart"
 };
