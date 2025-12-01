@@ -5,7 +5,7 @@ export class PageHolder {
 }
 export abstract class AbstractPage extends PageHolder {
   abstract url?: string;
-  async open() {
+  async open(url: string) {
     await this.page.goto(this.url as string);
   }
   async verifyUrl() {
