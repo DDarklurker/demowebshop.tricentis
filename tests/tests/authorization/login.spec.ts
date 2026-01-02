@@ -68,4 +68,19 @@ test.describe("Login Tests: @authorization", () => {
     await expect(loginPage.loginButton).toBeVisible();
     await expect(loginPage.registerButton).toBeVisible();
   });
+  test.only("mock login on Demo Web Shop", async ({
+    page,
+    app: { loginPage }
+  }) => {
+    await page.route("**/login", async (route) => {
+      await route.fulfill({
+        status: 200,
+        headers: {
+          location: "/"
+        }
+      });
+    });
+
+    await loginPage.logIn("kek@mail.com", password, pagesUrl.home);
+  });
 });
