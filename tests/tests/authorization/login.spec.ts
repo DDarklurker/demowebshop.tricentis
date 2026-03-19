@@ -1,7 +1,7 @@
 import { test } from "../../../src/fixture/fixturePage";
 import { faker } from "@faker-js/faker";
 import pagesUrl from "../../../src/utils/pagesUrl";
-import { expect } from "@playwright/test";
+import { expect, test as pwTest } from "@playwright/test";
 const login = process.env.LOGIN as string;
 const password = process.env.PASSWORD as string;
 test.describe("Login Tests: @authorization", () => {
@@ -14,8 +14,13 @@ test.describe("Login Tests: @authorization", () => {
     { tag: "@smoke" },
     async ({ app: { homePage, loginPage } }) => {
       await loginPage.logIn(login, password, pagesUrl.home);
-      await expect(homePage.headerComponent.customerInfoTab).toContainText(
-        login
+      await pwTest.step(
+        "Перевірка: користувач успішно залогінений",
+        async () => {
+          await expect(homePage.headerComponent.customerInfoTab).toContainText(
+            login
+          );
+        }
       );
     }
   );
