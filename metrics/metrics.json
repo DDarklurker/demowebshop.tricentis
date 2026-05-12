@@ -1,0 +1,215 @@
+{
+  "total": 25,
+  "passed": 25,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "successRate": 100,
+  "totalDurationMs": 64983,
+  "p95LatencyMs": 3955,
+  "p99LatencyMs": 4173,
+  "tests": [
+    {
+      "name": "Test Case 4:  Login User with invalid email.",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/login.spec.ts",
+      "status": "passed",
+      "durationMs": 3525,
+      "retries": 0,
+      "startTime": "2026-05-12T06:26:56.594Z"
+    },
+    {
+      "name": "Test Case 6: verify UI elements on page",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/login.spec.ts",
+      "status": "passed",
+      "durationMs": 3591,
+      "retries": 0,
+      "startTime": "2026-05-12T06:26:56.603Z"
+    },
+    {
+      "name": "Test Case 5: Click the 'Log in' button with no input",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/login.spec.ts",
+      "status": "passed",
+      "durationMs": 3869,
+      "retries": 0,
+      "startTime": "2026-05-12T06:26:56.586Z"
+    },
+    {
+      "name": "Test Case 2: Login User with incorrect password.",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/login.spec.ts",
+      "status": "passed",
+      "durationMs": 3881,
+      "retries": 0,
+      "startTime": "2026-05-12T06:26:56.651Z"
+    },
+    {
+      "name": "Test Case 3:  Login User with incorrect email.",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/login.spec.ts",
+      "status": "passed",
+      "durationMs": 3955,
+      "retries": 0,
+      "startTime": "2026-05-12T06:26:56.651Z"
+    },
+    {
+      "name": "Test Case 1: Login User with correct email and password.",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/login.spec.ts",
+      "status": "passed",
+      "durationMs": 4173,
+      "retries": 0,
+      "startTime": "2026-05-12T06:26:56.594Z"
+    },
+    {
+      "name": "Verify UI elements on page",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 1894,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:01.119Z"
+    },
+    {
+      "name": "Test Case 4: Recovere with empty email.",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/recover.spec.ts",
+      "status": "passed",
+      "durationMs": 2172,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:00.876Z"
+    },
+    {
+      "name": "Test Case 5: verify UI elements on page",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/recover.spec.ts",
+      "status": "passed",
+      "durationMs": 2165,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:00.934Z"
+    },
+    {
+      "name": "Test Case 3: Recovere with invalid email.",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/recover.spec.ts",
+      "status": "passed",
+      "durationMs": 2334,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:00.845Z"
+    },
+    {
+      "name": "Test Case 1: Recovere with correct email.",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/recover.spec.ts",
+      "status": "passed",
+      "durationMs": 2636,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:00.564Z"
+    },
+    {
+      "name": "Test Case 2: Recovere with incorrect email.",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/recover.spec.ts",
+      "status": "passed",
+      "durationMs": 2583,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:00.647Z"
+    },
+    {
+      "name": "@validation: Invalid email formats - without @ symbol",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 2025,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:03.338Z"
+    },
+    {
+      "name": "@validation: Invalid email formats - without domain",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 1994,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:03.415Z"
+    },
+    {
+      "name": "@validation: Empty fields -> required errors",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 2229,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:03.222Z"
+    },
+    {
+      "name": "@validation: Invalid email formats - with spaces",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 2083,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:03.424Z"
+    },
+    {
+      "name": "@validation: Password ≠ Confirm password",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 2507,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:03.148Z"
+    },
+    {
+      "name": "@regression: Email already exists",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 2794,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:03.204Z"
+    },
+    {
+      "name": "@functional: Gender radio buttons mutual exclusivity - Female selected",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 1825,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:05.744Z"
+    },
+    {
+      "name": "@functional: Gender radio buttons mutual exclusivity - Male selected",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 2016,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:05.654Z"
+    },
+    {
+      "name": "@smoke: Successfully registration (parameterized) - 1",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 2328,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:05.489Z"
+    },
+    {
+      "name": "@smoke: Successfully registration (parameterized) - 3",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 2276,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:05.576Z"
+    },
+    {
+      "name": "@smoke: Successfully registration (parameterized) - 2",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 2376,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:05.523Z"
+    },
+    {
+      "name": "@functional: Password field is hidden",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 1898,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:06.085Z"
+    },
+    {
+      "name": "@security: Password strength validation",
+      "file": "/home/darklurker/Документи/QA/QA Practice/Automation Practice/demowebshop.tricentis/tests/tests/authorization/register.spec.ts",
+      "status": "passed",
+      "durationMs": 1854,
+      "retries": 0,
+      "startTime": "2026-05-12T06:27:07.684Z"
+    }
+  ],
+  "startTime": "2026-05-12T06:26:55.796Z",
+  "endTime": "2026-05-12T06:27:09.754Z"
+}

@@ -25,8 +25,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI
-    ? [['list'], ['blob', { outputDir: 'test-results' }]]
-    : [['list'], ['html', { outputDir: 'test-results', open: 'never' }]],
+    ? [['list'], ['blob', { outputDir: 'test-results' }], ['./src/metrics/reporter.ts']]
+    : [['list'], ['html', { outputDir: 'test-results', open: 'never' }], ['./src/metrics/reporter.ts']],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -54,6 +54,17 @@ export default defineConfig({
       name: 'user',
       testMatch: '**/tests/card/**/*.spec.ts',
       use: { ...devices['Desktop Chrome'], storageState: 'storage/state.json' }
+    },
+    {
+      name: 'api',
+      testMatch: '**/tests/api/**/*.spec.ts',
+    },
+    {
+      name: 'flows',
+      testMatch: '**/tests/flows/**/*.spec.ts',
+      use: { ...devices['Desktop Chrome'] },
+      fullyParallel: false,
+      workers: 1,
     }
 
     /* Test against mobile viewports. */

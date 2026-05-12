@@ -1,0 +1,34 @@
+{
+  "overallPassed": true,
+  "checks": [
+    {
+      "criteria": "successRate",
+      "passed": true,
+      "threshold": 95,
+      "actual": 100,
+      "message": "✔ successRate: 100% ≥ 95%"
+    },
+    {
+      "criteria": "p95Latency",
+      "passed": true,
+      "threshold": 5000,
+      "actual": 3955,
+      "message": "✔ p95Latency: 3955ms ≤ 5000ms"
+    },
+    {
+      "criteria": "p99Latency",
+      "passed": true,
+      "threshold": 10000,
+      "actual": 4173,
+      "message": "✔ p99Latency: 4173ms ≤ 10000ms"
+    },
+    {
+      "criteria": "flakyRate",
+      "passed": true,
+      "threshold": 2,
+      "actual": 0,
+      "message": "✔ flakyRate: 0% ≤ 2%"
+    }
+  ],
+  "timestamp": "2026-05-12T06:27:09.754Z"
+}

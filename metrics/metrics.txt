@@ -1,0 +1,22 @@
+# HELP test_total Total number of tests by status.
+# TYPE test_total gauge
+test_total{status="pass"} 25
+test_total{status="fail"} 0
+test_total{status="skip"} 0
+
+# HELP test_success_rate Percentage of passed tests.
+# TYPE test_success_rate gauge
+test_success_rate 100
+
+# HELP test_duration_ms Test duration in milliseconds by quantile.
+# TYPE test_duration_ms gauge
+test_duration_ms{quantile="0.95"} 3955
+test_duration_ms{quantile="0.99"} 4173
+
+# HELP test_avg_duration_ms Average test duration in milliseconds.
+# TYPE test_avg_duration_ms gauge
+test_avg_duration_ms 2599
+
+# HELP test_flaky_count Number of flaky tests.
+# TYPE test_flaky_count gauge
+test_flaky_count 0

@@ -1,0 +1,74 @@
+[
+  {
+    "date": "2026-05-12",
+    "successRate": 100,
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "durationMs": 0
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 100,
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "durationMs": 0
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 100,
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "durationMs": 0
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 100,
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "durationMs": 0
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 100,
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "durationMs": 0
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 0,
+    "total": 25,
+    "passed": 0,
+    "failed": 25,
+    "durationMs": 21983
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 91.3,
+    "total": 23,
+    "passed": 21,
+    "failed": 2,
+    "durationMs": 142637
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 100,
+    "total": 23,
+    "passed": 23,
+    "failed": 0,
+    "durationMs": 16136
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 100,
+    "total": 25,
+    "passed": 25,
+    "failed": 0,
+    "durationMs": 64983
+  }
+]
