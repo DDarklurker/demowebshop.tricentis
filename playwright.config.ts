@@ -26,7 +26,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI
     ? [['list'], ['blob', { outputDir: 'test-results' }]]
-    : [['list'], ['html', { outputDir: 'test-results', open: 'always' }]],
+    : [['list'], ['html', { outputDir: 'test-results', open: 'never' }]],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -40,13 +40,19 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'smoke',
+      grep: /@smoke/,
+      testIgnore: '**/tests/card/**/*.spec.ts',
+      use: { ...devices['Desktop Chrome'] }
+    },
+    {
       name: 'auth',
       testMatch: '**/tests/authorization/**/*.spec.ts',
       use: { ...devices['Desktop Chrome'] }
     },
     {
       name: 'user',
-      testMatch: '**/tests/home/**/*.spec.ts',
+      testMatch: '**/tests/card/**/*.spec.ts',
       use: { ...devices['Desktop Chrome'], storageState: 'storage/state.json' }
     }
 

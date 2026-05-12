@@ -1,14 +1,17 @@
 {
     "name": "demowebshop.tricentis",
     "version": "1.2.0",
+    "description": "Automated testing framework for Demo Web Shop (tricentis.com) using Playwright, TypeScript, and Page Object Model.",
     "main": "index.js",
     "directories": {
         "test": "tests"
     },
     "scripts": {
         "test": "playwright test && playwright merge-reports --reporter html ./test-results",
+        "test:ci": "playwright test --project=smoke",
         "test:local": "playwright test && playwright merge-reports --reporter html ./test-results && playwright show-report",
-        "test:debug": "playwright test --debug"
+        "test:debug": "playwright test --debug",
+        "test:ui": "playwright test --ui"
     },
     "repository": {
         "type": "git",
@@ -28,6 +31,6 @@
         "prettier": "3.6.2"
     },
     "dependencies": {
-        "dotenv": "17.2.1"
+        "dotenv": "^17.2.1"
     }
 }
