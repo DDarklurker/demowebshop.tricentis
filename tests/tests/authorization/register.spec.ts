@@ -72,25 +72,25 @@ test.describe("Register", () => {
     });
   }
 
-  for (const {
-    id,
-    gender,
-    firstname,
-    lastname,
-    email,
-    password,
-    confirmpassword
-  } of users) {
+  for (const { id, gender, firstname, lastname, password } of users) {
     test(`@smoke: Successfully registration (parameterized) - ${id}`, async ({
-      app: { registerPage }
+      app: { homePage, registerPage }
     }) => {
+      const email = faker.internet.email().toLowerCase();
       await registerPage.registerUser(
         gender as genderType,
         firstname,
         lastname,
         email,
         password,
-        confirmpassword
+        password
+      );
+      await registerPage.clickRegisterButton();
+      await expect(registerPage.registerResultMessage).toContainText(
+        "Your registration completed"
+      );
+      await expect(homePage.headerComponent.customerInfoTab).toContainText(
+        email
       );
     });
   }

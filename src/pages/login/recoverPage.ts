@@ -18,6 +18,6 @@ export class RecoverPage extends AbstractPage {
   async recoverLogin(login: string, resultPage: string) {
     await this.enterLogin(login);
     await this.clickRecoverButton();
-    expect(this.page).toHaveURL(resultPage);
+    await expect(this.page).toHaveURL(resultPage);
   }
 }

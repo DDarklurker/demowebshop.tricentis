@@ -28,6 +28,7 @@ export class RegisterPage extends AbstractPage {
   readonly registerErrorMessage = this.page.locator(
     ".validation-summary-errors"
   );
+  readonly registerResultMessage = this.page.locator(".page-body .result");
   async clickGenderPoint(gender: genderType) {
     if (gender === "Male") {
       await this.genderManePoint.click();
@@ -74,7 +75,6 @@ export class RegisterPage extends AbstractPage {
     await this.enterEmail(email);
     await this.enterPassword(password);
     await this.enterConfirmPassword(confirmPassword);
-    // await this.clickRegisterButton();
   }
   async verifyElements() {
     await expect(this.genderManePoint).toBeVisible();
