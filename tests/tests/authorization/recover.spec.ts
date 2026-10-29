@@ -16,33 +16,24 @@ test.describe("Recover Tests: @authorization", async () => {
     async ({ app: { recoverPage } }) => {
       await recoverPage.recoverLogin(login, pagesUrl.recover);
       await expect(recoverPage.resultMessage).toContainText(
-        "Email with instructions has been sent to you."
+        "Email with instructions has been sent to you.",
       );
-    }
+    },
   );
-  test("Test Case 2: Recovere with incorrect email.", async ({
-    app: { recoverPage }
-  }) => {
+
+  test("Test Case 2: Recovere with incorrect email.", async ({ app: { recoverPage } }) => {
     await recoverPage.recoverLogin(faker.internet.email(), pagesUrl.recover);
     await expect(recoverPage.resultMessage).toContainText("Email not found.");
   });
-  test("Test Case 3: Recovere with invalid email.", async ({
-    app: { recoverPage }
-  }) => {
+  test("Test Case 3: Recovere with invalid email.", async ({ app: { recoverPage } }) => {
     await recoverPage.recoverLogin(faker.internet.username(), pagesUrl.recover);
     await expect(recoverPage.validationMessage).toContainText("Wrong email");
   });
-  test("Test Case 4: Recovere with empty email.", async ({
-    app: { recoverPage }
-  }) => {
+  test("Test Case 4: Recovere with empty email.", async ({ app: { recoverPage } }) => {
     await recoverPage.clickRecoverButton();
-    await expect(recoverPage.validationMessage).toContainText(
-      "Enter your email"
-    );
+    await expect(recoverPage.validationMessage).toContainText("Enter your email");
   });
-  test("Test Case 5: verify UI elements on page", async ({
-    app: { recoverPage }
-  }) => {
+  test("Test Case 5: verify UI elements on page", async ({ app: { recoverPage } }) => {
     await expect(recoverPage.emailPlaceholder).toBeVisible();
     await expect(recoverPage.recoverButton).toBeVisible();
   });
