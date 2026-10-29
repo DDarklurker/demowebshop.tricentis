@@ -1,4 +1,4 @@
-import { Locator, Page, expect } from "@playwright/test";
+import { Page, expect } from "@playwright/test";
 import { CatalogComponent } from "../components/catalogComponent";
 import { HeaderComponent } from "../components/headerComponent";
 import { SearchComponent } from "../components/searchComponent";
@@ -20,7 +20,7 @@ export class HomePage extends BasePage {
   readonly headerComponent: HeaderComponent;
   readonly searchComponent: SearchComponent;
   readonly topMenuCatalogComponent: topMenuCatalogComponent;
-  constructor(page) {
+  constructor(page: Page) {
     super(page);
     this.catalogComponent = new CatalogComponent(page);
     this.headerComponent = new HeaderComponent(page);

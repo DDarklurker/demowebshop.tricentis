@@ -1,9 +1,9 @@
-import { expect, Locator } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { BasePage } from "../basePage";
 
 export type genderType = "Male" | "Female";
 export class RegisterPage extends BasePage {
-  readonly genderManePoint: Locator;
+  readonly genderMalePoint: Locator;
   readonly genderFemalePoint: Locator;
   readonly firstNamePlaceholder: Locator;
   readonly lastNamePlaceholder: Locator;
@@ -17,9 +17,9 @@ export class RegisterPage extends BasePage {
   readonly passwordErrorMessage: Locator;
   readonly confirmPasswordErrorMessage: Locator;
   readonly registerErrorMessage: Locator;
-  constructor(page) {
+  constructor(page: Page) {
     super(page);
-    this.genderManePoint = page.locator("#gender-male");
+    this.genderMalePoint = page.locator("#gender-male");
     this.genderFemalePoint = page.locator("#gender-female");
     this.firstNamePlaceholder = page.locator("#FirstName");
     this.lastNamePlaceholder = page.locator("#LastName");
@@ -38,7 +38,7 @@ export class RegisterPage extends BasePage {
   }
   async clickGenderPoint(gender: genderType) {
     if (gender === "Male") {
-      await this.genderManePoint.click();
+      await this.genderMalePoint.click();
     } else if (gender === "Female") {
       await this.genderFemalePoint.click();
     } else {
@@ -68,7 +68,7 @@ export class RegisterPage extends BasePage {
   async clickRegisterButton() {
     await this.registerButton.click();
   }
-  async registerUser(
+  async fillRegisterForm(
     sex: genderType,
     firstName: string,
     lastName: string,
@@ -82,10 +82,9 @@ export class RegisterPage extends BasePage {
     await this.enterEmail(email);
     await this.enterPassword(password);
     await this.enterConfirmPassword(confirmPassword);
-    // await this.clickRegisterButton();
   }
   async verifyElements() {
-    await expect(this.genderManePoint).toBeVisible();
+    await expect(this.genderMalePoint).toBeVisible();
     await expect(this.genderFemalePoint).toBeVisible();
     await expect(this.firstNamePlaceholder).toBeVisible();
     await expect(this.lastNamePlaceholder).toBeVisible();

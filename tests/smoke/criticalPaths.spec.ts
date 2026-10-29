@@ -24,11 +24,7 @@ test.describe("Critical Paths: @smoke", () => {
     await expect(basePage.topMenuCatalogComponent.bookTab).toBeVisible();
   });
 
-  test("User can log in with valid credentials @smoke", async ({
-    page,
-    basePage,
-    loginPage,
-  }) => {
+  test("User can log in with valid credentials @smoke", async ({ page, basePage, loginPage }) => {
     await page.goto(pagesUrl.home);
     await basePage.headerComponent.clickLoginTab();
     await loginPage.logIn(login, password, pagesUrl.home);
@@ -36,27 +32,27 @@ test.describe("Critical Paths: @smoke", () => {
     await expect(basePage.headerComponent.customerInfoTab).toContainText(login);
   });
 
-  test("User can register a new account @smoke", async ({
-    page,
-    basePage,
-    registerPage,
-  }) => {
+  test("User can register a new account @smoke", async ({ page, basePage, registerPage }) => {
     const email = faker.internet.email();
     const pass = faker.internet.password({ length: 8 });
 
     await page.goto(pagesUrl.home);
     await basePage.headerComponent.clickRegisterTab();
-    await registerPage.registerUser("Male", faker.person.firstName(), faker.person.lastName(), email, pass, pass);
+    await registerPage.fillRegisterForm(
+      "Male",
+      faker.person.firstName(),
+      faker.person.lastName(),
+      email,
+      pass,
+      pass,
+    );
     await registerPage.clickRegisterButton();
 
     // Should redirect to registration result page
     await expect(page).toHaveURL(/registerresult/);
   });
 
-  test("Catalog navigation works @smoke", async ({
-    page,
-    basePage,
-  }) => {
+  test("Catalog navigation works @smoke", async ({ page, basePage }) => {
     await page.goto(pagesUrl.home);
 
     await basePage.headerComponent.clickOnLogo();
@@ -77,13 +73,10 @@ test.describe("Critical Paths: @smoke", () => {
     await basePage.searchComponent.searchProduct("computer");
 
     await expect(page).toHaveURL(/search/);
-    // Verify search page has some content
+    await expect(page.locator(".search-results, .product-grid, .product-list")).toBeVisible();
   });
 
-  test("Shopping cart is accessible @smoke", async ({
-    page,
-    basePage,
-  }) => {
+  test("Shopping cart is accessible @smoke", async ({ page, basePage }) => {
     await page.goto(pagesUrl.home);
     await basePage.headerComponent.clickShoppingCartTab();
 
@@ -93,11 +86,7 @@ test.describe("Critical Paths: @smoke", () => {
     });
   });
 
-  test("Password recovery page loads @smoke", async ({
-    page,
-    basePage,
-    loginPage,
-  }) => {
+  test("Password recovery page loads @smoke", async ({ page, basePage, loginPage }) => {
     await page.goto(pagesUrl.home);
     await basePage.headerComponent.clickLoginTab();
     await loginPage.clickForgotPassword();

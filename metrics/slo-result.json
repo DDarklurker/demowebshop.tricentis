@@ -1,26 +1,26 @@
 {
-  "overallPassed": true,
+  "overallPassed": false,
   "checks": [
     {
       "criteria": "successRate",
-      "passed": true,
+      "passed": false,
       "threshold": 95,
-      "actual": 100,
-      "message": "✔ successRate: 100% ≥ 95%"
+      "actual": 85.92,
+      "message": "✘ successRate: 85.92% < 95%"
     },
     {
       "criteria": "p95Latency",
-      "passed": true,
+      "passed": false,
       "threshold": 5000,
-      "actual": 3955,
-      "message": "✔ p95Latency: 3955ms ≤ 5000ms"
+      "actual": 30234,
+      "message": "✘ p95Latency: 30234ms > 5000ms"
     },
     {
       "criteria": "p99Latency",
-      "passed": true,
+      "passed": false,
       "threshold": 10000,
-      "actual": 4173,
-      "message": "✔ p99Latency: 4173ms ≤ 10000ms"
+      "actual": 35147,
+      "message": "✘ p99Latency: 35147ms > 10000ms"
     },
     {
       "criteria": "flakyRate",
@@ -30,5 +30,5 @@
       "message": "✔ flakyRate: 0% ≤ 2%"
     }
   ],
-  "timestamp": "2026-05-12T06:27:09.754Z"
+  "timestamp": "2026-10-25T14:17:44.802Z"
 }

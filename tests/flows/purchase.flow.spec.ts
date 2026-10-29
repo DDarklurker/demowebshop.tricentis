@@ -10,10 +10,7 @@ import { test, expect } from "./fixture/flow.fixture";
 import pagesUrl from "../../src/utils/pagesUrl";
 
 test.describe("Purchase Flow: @e2e", () => {
-  test("Guest: Browse → View Product → Add to Cart → Verify @e2e", async ({
-    page,
-    homePage,
-  }) => {
+  test("Guest: Browse → View Product → Add to Cart → Verify @e2e", async ({ page, homePage }) => {
     // Step 1: Open homepage
     await page.goto(pagesUrl.home);
     await expect(homePage.headerComponent.shoppingCartTab).toBeVisible();
@@ -52,10 +49,7 @@ test.describe("Purchase Flow: @e2e", () => {
     await expect(page).toHaveURL(pagesUrl.cart);
   });
 
-  test("Cart management: Add → View → Verify empty state @e2e", async ({
-    page,
-    homePage,
-  }) => {
+  test("Cart management: Add → View → Verify empty state @e2e", async ({ page, homePage }) => {
     // Step 1: Open cart without adding anything
     await page.goto(pagesUrl.home);
     await homePage.headerComponent.clickShoppingCartTab();

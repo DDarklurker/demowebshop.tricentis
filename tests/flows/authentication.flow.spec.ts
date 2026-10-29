@@ -11,12 +11,7 @@ import { faker } from "@faker-js/faker";
 import pagesUrl from "../../src/utils/pagesUrl";
 
 test.describe("Authentication Flow: @e2e", () => {
-  test("Register → Logout → Login @e2e", async ({
-    page,
-    homePage,
-    registerPage,
-    loginPage,
-  }) => {
+  test("Register → Logout → Login @e2e", async ({ page, homePage, registerPage, loginPage }) => {
     const email = faker.internet.email();
     const pass = faker.internet.password({ length: 8 });
     const firstName = faker.person.firstName();
@@ -24,14 +19,7 @@ test.describe("Authentication Flow: @e2e", () => {
 
     // Step 1: Register
     await page.goto(pagesUrl.register);
-    await registerPage.registerUser(
-      "Male",
-      firstName,
-      lastName,
-      email,
-      pass,
-      pass
-    );
+    await registerPage.fillRegisterForm("Male", firstName, lastName, email, pass, pass);
     await registerPage.clickRegisterButton();
 
     // Verify registration result page

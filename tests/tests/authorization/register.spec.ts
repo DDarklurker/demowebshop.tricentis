@@ -13,8 +13,8 @@ test.describe("Register", () => {
     await registerPage.verifyElements();
   });
 
-  test("@validation: Password ≠ Confirm password", async ({ registerPage }) => {
-    await registerPage.registerUser(
+  test("Password ≠ Confirm password", { tag: "@validation" }, async ({ registerPage }) => {
+    await registerPage.fillRegisterForm(
       data.gender as genderType,
       data.firstname,
       data.lastname,
@@ -27,8 +27,8 @@ test.describe("Register", () => {
       "The password and confirmation password do not match."
     );
   });
-  test("@regression: Email already exists", async ({ registerPage }) => {
-    await registerPage.registerUser(
+  test("Email already exists", { tag: "@regression" }, async ({ registerPage }) => {
+    await registerPage.fillRegisterForm(
       data.gender as genderType,
       data.firstname,
       data.lastname,
@@ -42,7 +42,7 @@ test.describe("Register", () => {
     );
   });
 
-  test("@validation: Empty fields -> required errors", async ({
+  test("Empty fields -> required errors", { tag: "@validation" }, async ({
     page,
     registerPage,
   }) => {
@@ -58,7 +58,7 @@ test.describe("Register", () => {
   ];
 
   for (const { email, description } of invalidEmails) {
-    test(`@validation: Invalid email formats - ${description}`, async ({
+    test(`Invalid email formats - ${description}`, { tag: "@validation" }, async ({
       registerPage,
     }) => {
       await registerPage.enterEmail(email);
@@ -76,10 +76,10 @@ test.describe("Register", () => {
     password,
     confirmpassword,
   } of users) {
-    test(`@smoke: Successfully registration (parameterized) - ${id}`, async ({
+    test(`Successfully registration (parameterized) - ${id}`, { tag: "@smoke" }, async ({
       registerPage,
     }) => {
-      await registerPage.registerUser(
+      await registerPage.fillRegisterForm(
         gender as genderType,
         firstname,
         lastname,
@@ -89,29 +89,29 @@ test.describe("Register", () => {
       );
     });
   }
-  test("@functional: Gender radio buttons mutual exclusivity - Male selected", async ({
+  test("Gender radio buttons mutual exclusivity - Male selected", { tag: "@functional" }, async ({
     registerPage,
   }) => {
-    await registerPage.genderManePoint.click();
-    await expect(registerPage.genderManePoint).toBeChecked();
+    await registerPage.genderMalePoint.click();
+    await expect(registerPage.genderMalePoint).toBeChecked();
     await expect(registerPage.genderFemalePoint).not.toBeChecked();
   });
-  test("@functional: Gender radio buttons mutual exclusivity - Female selected", async ({
+  test("Gender radio buttons mutual exclusivity - Female selected", { tag: "@functional" }, async ({
     registerPage,
   }) => {
     await registerPage.genderFemalePoint.click();
     await expect(registerPage.genderFemalePoint).toBeChecked();
-    await expect(registerPage.genderManePoint).not.toBeChecked();
+    await expect(registerPage.genderMalePoint).not.toBeChecked();
   });
-  test("@functional: Password field is hidden", async ({ registerPage }) => {
+  test("Password field is hidden", { tag: "@functional" }, async ({ registerPage }) => {
     await registerPage.passwordPlaceholder.fill(data.password);
     await expect(registerPage.passwordPlaceholder).toHaveAttribute(
       "type",
       "password"
     );
   });
-  test("@security: Password strength validation", async ({ registerPage }) => {
-    await registerPage.registerUser(
+  test("Password strength validation", { tag: "@security" }, async ({ registerPage }) => {
+    await registerPage.fillRegisterForm(
       data.gender as genderType,
       data.firstname,
       data.lastname,

@@ -51,6 +51,6 @@ test.describe("Catalog Flow: @e2e", () => {
     // Verify search results area is visible
     await expect(
       page.locator(".search-results, .product-grid, .product-list")
-    ).toBeVisible({ timeout: 10000 });
+    ).toBeVisible();
   });
 });

@@ -12,7 +12,6 @@ export class HeaderComponent {
   readonly wishlistTab: Locator;
   readonly searchComponent: SearchComponent;
   constructor(protected readonly page: Page) {
-    this.page = page;
     this.searchComponent = new SearchComponent(page);
     this.logoTab = page.locator('a[href="/"]');
     this.registerTab = page.locator('div.header a[href="/register"]');

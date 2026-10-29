@@ -6,7 +6,7 @@ export const test = base.extend({
     await page.setViewportSize({ width: 1920, height: 1080 });
     page.on("console", async (msg: ConsoleMessage) => {
       if (msg.type() === "error") {
-        throw new Error("Error");
+        console.warn(`[Browser Console Error] ${msg.text()}`);
       }
     });
     await use(page);

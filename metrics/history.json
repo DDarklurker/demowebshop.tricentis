@@ -70,5 +70,101 @@
     "passed": 25,
     "failed": 0,
     "durationMs": 64983
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 92.96,
+    "total": 71,
+    "passed": 66,
+    "failed": 5,
+    "durationMs": 143166
+  },
+  {
+    "date": "2026-05-12",
+    "successRate": 100,
+    "total": 23,
+    "passed": 23,
+    "failed": 0,
+    "durationMs": 11560
+  },
+  {
+    "date": "2026-05-21",
+    "successRate": 100,
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "durationMs": 2629
+  },
+  {
+    "date": "2026-05-21",
+    "successRate": 100,
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "durationMs": 14315
+  },
+  {
+    "date": "2026-05-21",
+    "successRate": 100,
+    "total": 25,
+    "passed": 25,
+    "failed": 0,
+    "durationMs": 69484
+  },
+  {
+    "date": "2026-10-25",
+    "successRate": 75,
+    "total": 8,
+    "passed": 6,
+    "failed": 2,
+    "durationMs": 46016
+  },
+  {
+    "date": "2026-10-25",
+    "successRate": 33.8,
+    "total": 71,
+    "passed": 24,
+    "failed": 47,
+    "durationMs": 25629
+  },
+  {
+    "date": "2026-10-25",
+    "successRate": 33.8,
+    "total": 71,
+    "passed": 24,
+    "failed": 47,
+    "durationMs": 17923
+  },
+  {
+    "date": "2026-10-25",
+    "successRate": 0,
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "durationMs": 4
+  },
+  {
+    "date": "2026-10-25",
+    "successRate": 0,
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "durationMs": 3
+  },
+  {
+    "date": "2026-10-25",
+    "successRate": 50,
+    "total": 2,
+    "passed": 1,
+    "failed": 1,
+    "durationMs": 20204
+  },
+  {
+    "date": "2026-10-25",
+    "successRate": 85.92,
+    "total": 71,
+    "passed": 61,
+    "failed": 10,
+    "durationMs": 781426
   }
 ]
