@@ -1,10 +1,10 @@
 import { expect } from "@playwright/test";
 import { AbstractPage } from "../../abstract/abstract";
+import pagesUrl from "../../utils/pagesUrl";
 export class RecoverPage extends AbstractPage {
+  readonly url = pagesUrl.recover;
   readonly emailPlaceholder = this.page.locator("#Email");
-  readonly recoverButton = this.page.locator(
-    'input[type=submit][value="Recover"]'
-  );
+  readonly recoverButton = this.page.locator('input[type=submit][value="Recover"]');
   readonly validationMessage = this.page.locator('span[for="Email"]');
   readonly resultMessage = this.page.locator('[class="result"]');
 
@@ -18,6 +18,6 @@ export class RecoverPage extends AbstractPage {
   async recoverLogin(login: string, resultPage: string) {
     await this.enterLogin(login);
     await this.clickRecoverButton();
-    expect(this.page).toHaveURL(resultPage);
+    await expect(this.page).toHaveURL(resultPage);
   }
 }
