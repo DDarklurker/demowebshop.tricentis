@@ -4,12 +4,12 @@ export class PageHolder {
   constructor(protected page: Page) {}
 }
 export abstract class AbstractPage extends PageHolder {
-  abstract url?: string;
-  async open(url: string) {
-    await this.page.goto(this.url as string);
+  abstract url: string;
+  async open() {
+    await this.page.goto(this.url);
   }
   async verifyUrl() {
-    await expect(this.page).toHaveURL(this.url as string);
+    await expect(this.page).toHaveURL(this.url);
   }
 }
 export abstract class Component extends PageHolder {}

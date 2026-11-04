@@ -6,7 +6,7 @@ import { expect } from "@playwright/test";
 const login = process.env.LOGIN as string;
 test.describe("Recover Tests: @authorization", async () => {
   test.beforeEach(async ({ app: { homePage, loginPage } }) => {
-    await homePage.open(pagesUrl.home);
+    await homePage.open();
     await homePage.headerComponent.clickLoginTab();
     await loginPage.clickForgotPassword();
   });

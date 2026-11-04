@@ -6,7 +6,7 @@ const login = process.env.LOGIN as string;
 const password = process.env.PASSWORD as string;
 test.describe("Login Tests: @authorization", () => {
   test.beforeEach(async ({ app: { homePage } }) => {
-    await homePage.open(pagesUrl.home);
+    await homePage.open();
     await homePage.headerComponent.clickLoginTab();
   });
   test(
