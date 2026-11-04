@@ -1,52 +1,40 @@
-import { expect, Locator } from "@playwright/test";
-import { BasePage } from "../basePage";
+import { expect } from "@playwright/test";
+import { AbstractPage } from "../../abstract/abstract";
+import { step } from "../../helpers/decorators/step";
 import pagesUrl from "../../utils/pagesUrl";
-export class LoginPage extends BasePage {
-  readonly emailPlaceholder: Locator;
-  readonly passwordPlaceholder: Locator;
-  readonly loginButton: Locator;
-  readonly rememberMeCheckBox: Locator;
-  readonly forgotPasswordTab: Locator;
-  readonly newCustomerButton: Locator;
-  readonly incorrectLoginMessage: Locator;
-  readonly validationEmailField: Locator;
-  readonly registerButton: Locator;
-  constructor(page) {
-    super(page);
-    this.emailPlaceholder = page.locator("#Email");
-    this.passwordPlaceholder = page.locator("#Password");
-    this.loginButton = page.locator("input[type='submit'][value='Log in']");
-    this.rememberMeCheckBox = page.locator("#RememberMe");
-    this.forgotPasswordTab = page.locator('[href="/passwordrecovery"]');
-    this.newCustomerButton = page.locator(
-      `[onclick="location.href='/register'"]`
-    );
-    this.incorrectLoginMessage = page.locator(
-      "[class=validation-summary-errors]"
-    );
-    this.validationEmailField = page.locator(
-      "[class='field-validation-error']"
-    );
-    this.registerButton = page.locator(`[onclick="location.href='/register'"]`);
-  }
-
+export class LoginPage extends AbstractPage {
+  readonly url = pagesUrl.login;
+  readonly emailPlaceholder = this.page.locator("#Email");
+  readonly passwordPlaceholder = this.page.locator("#Password");
+  readonly loginButton = this.page.locator("input[type='submit'][value='Log in']");
+  readonly rememberMeCheckBox = this.page.locator("#RememberMe");
+  readonly forgotPasswordTab = this.page.locator('[href="/passwordrecovery"]');
+  readonly newCustomerButton = this.page.locator(`[onclick="location.href='/register'"]`);
+  readonly incorrectLoginMessage = this.page.locator("[class=validation-summary-errors]");
+  readonly validationEmailField = this.page.locator("[class='field-validation-error']");
+  readonly registerButton = this.page.locator(`[onclick="location.href='/register'"]`);
+  @step("Click login button")
   async clickLoginButton() {
     await this.loginButton.click();
   }
+  @step("Enter login")
   async enterLogin(login: string) {
     await this.emailPlaceholder.fill(login);
     await expect(this.emailPlaceholder).toHaveValue(login);
   }
+  @step("Enter password")
   async enterPassword(password: string) {
     await this.passwordPlaceholder.fill(password);
     await expect(this.passwordPlaceholder).toHaveValue(password);
   }
+  @step("Log in to the system")
   async logIn(login: string, password: string, resultPage: string) {
     await this.enterLogin(login);
     await this.enterPassword(password);
     await this.clickLoginButton();
     await expect(this.page).toHaveURL(resultPage);
   }
+  @step("Click forgot password")
   async clickForgotPassword() {
     await this.forgotPasswordTab.click();
     await expect(this.page).toHaveURL(pagesUrl.recover);

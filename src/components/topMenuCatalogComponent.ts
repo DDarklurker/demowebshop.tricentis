@@ -1,23 +1,19 @@
-import { Locator, Page } from "@playwright/test";
+import { Component } from "../abstract/abstract";
 
-export class topMenuCatalogComponent {
-  readonly topMenu: Locator;
-  readonly bookTab: Locator;
-  readonly computerTab: Locator;
-  readonly electronicsTab: Locator;
-  readonly apparelTab: Locator;
-  readonly digitalDownloadsTab: Locator;
-  readonly jewelryTab: Locator;
-  readonly giftCardsTab: Locator;
-  constructor(protected readonly page: Page) {
-    this.bookTab = page.locator('ul.top-menu a[href="/books"]');
-    this.computerTab = page.locator('ul.top-menu a[href="/computers"]');
-    this.electronicsTab = page.locator('ul.top-menu a[href="/electronics"]');
-    this.apparelTab = page.locator('ul.top-menu a[href="/apparel-shoes"]');
-    this.digitalDownloadsTab = page.locator(
-      'ul.top-menu a[href="/digital-downloads"]'
-    );
-    this.jewelryTab = page.locator('ul.top-menu a[href="/jewelry"]');
-    this.giftCardsTab = page.locator('ul.top-menu a[href="/gift-cards"]');
-  }
+export class topMenuCatalogComponent extends Component {
+  readonly bookTab = this.page.locator('ul.top-menu a[href="/books"]');
+  readonly computerTab = this.page.locator('ul.top-menu a[href="/computers"]');
+  readonly electronicsTab = this.page.locator(
+    'ul.top-menu a[href="/electronics"]'
+  );
+  readonly apparelTab = this.page.locator(
+    'ul.top-menu a[href="/apparel-shoes"]'
+  );
+  readonly digitalDownloadsTab = this.page.locator(
+    'ul.top-menu a[href="/digital-downloads"]'
+  );
+  readonly jewelryTab = this.page.locator('ul.top-menu a[href="/jewelry"]');
+  readonly giftCardsTab = this.page.locator(
+    'ul.top-menu a[href="/gift-cards"]'
+  );
 }
