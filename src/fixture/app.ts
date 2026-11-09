@@ -5,6 +5,7 @@ import { RecoverPage } from "../pages/login/recoverPage";
 import { RegisterPage } from "../pages/login/registerPage";
 import { Product } from "../pages/products/product";
 import { ProductDetailPage } from "../pages/products/productDetailPage";
+import { ShoppingCartPage } from "../pages/shoppingCart/shoppingCartPage";
 
 export class App extends PageHolder {
   readonly homePage = new HomePage(this.page);
@@ -13,4 +14,5 @@ export class App extends PageHolder {
   readonly registerPage = new RegisterPage(this.page);
   readonly product = new Product(this.page);
   readonly productDetailPage = new ProductDetailPage(this.page);
+  readonly shoppingCartPage = new ShoppingCartPage(this.page);
 }
