@@ -1,7 +1,7 @@
 import { expect } from "@playwright/test";
+import { Component } from "../abstract/abstract";
 import pagesUrl from "../utils/pagesUrl";
 import { SearchComponent } from "./searchComponent";
-import { Component } from "../abstract/abstract";
 
 export class HeaderComponent extends Component {
   readonly searchComponent = new SearchComponent(this.page);
@@ -9,11 +9,11 @@ export class HeaderComponent extends Component {
   readonly registerTab = this.page.locator('div.header a[href="/register"]');
   readonly loginTab = this.page.locator('div.header a[href="/login"]');
   readonly logoutTab = this.page.locator('div.header a[href="/logout"]');
-  readonly customerInfoTab = this.page
-    .locator('div.header a[href="/customer/info"]')
-    .first();
-  readonly shoppingCartTab = this.page.locator('div.header a[href="/cart"]');
+  readonly customerInfoTab = this.page.locator('div.header a[href="/customer/info"]').first();
+  readonly shoppingCartTab = this.page.locator(" div.header a.ico-cart");
   readonly wishlistTab = this.page.locator('div.header a[href="/wishlist"]');
+  readonly shoppingCartTabCounter = this.shoppingCartTab.locator(".cart-qty");
+  readonly productHasBeenAdded = this.page.locator("p.content");
   async clickShoppingCartTab() {
     await this.shoppingCartTab.click();
     await expect(this.page).toHaveURL(pagesUrl.cart);

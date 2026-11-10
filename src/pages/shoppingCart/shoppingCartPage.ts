@@ -4,6 +4,7 @@ import pagesUrl from "../../utils/pagesUrl";
 export class ShoppingCartPage extends AbstractPage {
   url = pagesUrl.cart;
   readonly cartItem = this.page.locator(' [class="cart-item-row"]');
+  readonly itemCartName = this.cartItem.locator(".product-name");
   readonly removeCheckbox = this.page.locator('[type="checkbox"]');
   readonly itemQuantityText = this.cartItem.locator(' [name*="itemquantity"]');
   readonly checkoutButton = this.page.locator("#checkout");
