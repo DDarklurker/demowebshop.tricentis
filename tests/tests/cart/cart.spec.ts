@@ -4,7 +4,7 @@ test.describe("Cart: @cart", async () => {
   test.beforeEach(async ({ app: { homePage } }) => {
     await homePage.open();
   });
-  test("Test Case 1 @smoke: add product to cart (Book - Computing and Internet)", async ({
+  test("Test Case 1 @smoke: add product to cart from category(Book - Computing and Internet)", async ({
     app: { homePage, product, shoppingCartPage },
   }) => {
     await homePage.catalogComponent.booksTab.click();

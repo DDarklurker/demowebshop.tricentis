@@ -9,7 +9,7 @@
 ---
 
 **Test Case 1 @smoke: add product to cart from category(Book - Computing and Internet)**
-<br> Automated: No.
+<br> Automated: Yes.
 
 1. From the home page, open a category Book.
 2. Click "Add to cart" on product "Computing and Internet".
@@ -21,7 +21,7 @@
 ---
 
 **Test Case 2 @smoke: add product to cart from detail product(Book - Computing and Internet)**
-<br> Automated: No.
+<br> Automated: Yes.
 
 1. From the home page, open a category Book.
 2. Click on name product "Computing and Internet".
