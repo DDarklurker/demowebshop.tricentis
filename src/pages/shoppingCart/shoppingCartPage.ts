@@ -22,7 +22,7 @@ export class ShoppingCartPage extends AbstractPage {
   readonly shippingCountry = this.page.locator("#CountryId");
   readonly shippingState = this.page.locator("#StateProvinceId");
 
-  async clickAllRemoveCheckbox() {
+  async clickOnAllRemoveCheckbox() {
     for (const checkbox of await this.removeCheckbox.all()) {
       await checkbox.check();
     }
@@ -32,7 +32,7 @@ export class ShoppingCartPage extends AbstractPage {
   async clearCart() {
     await this.open();
     if ((await this.cartItem.count()) > 0) {
-      await this.clickAllRemoveCheckbox();
+      await this.clickOnAllRemoveCheckbox();
       await this.updateCartButton.click();
     }
   }
