@@ -6,6 +6,7 @@ test.describe("Cart: @cart", async () => {
   });
   test("Test Case 1 @smoke: add product to cart from category(Book - Computing and Internet)", async ({
     app: { homePage, product, shoppingCartPage },
+    cleanCart,
   }) => {
     await homePage.catalogComponent.booksTab.click();
     await product.categoryProductsComponent.addToCartByName("Computing and Internet");
@@ -19,6 +20,7 @@ test.describe("Cart: @cart", async () => {
   });
   test("Test Case 2 @smoke: add product to cart from detail product(Book - Computing and Internet)", async ({
     app: { homePage, product, productDetailPage, shoppingCartPage },
+    cleanCart,
   }) => {
     await homePage.catalogComponent.booksTab.click();
     await product.openProductDetailsByName("Computing and Internet");

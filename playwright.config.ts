@@ -53,8 +53,9 @@ export default defineConfig({
     },
     {
       name: "logged-in",
-      testMatch: "**/tests/product/**/*.spec.ts",
+      testMatch: ["**/tests/product/**/*.spec.ts", "**/tests/cart/**/*.spec.ts"],
       use: { ...devices["Desktop Chrome"], storageState: "storage/state.json" },
+      fullyParallel: false,
       dependencies: ["setup"],
     },
 
