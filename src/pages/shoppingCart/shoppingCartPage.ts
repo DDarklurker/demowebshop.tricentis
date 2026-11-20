@@ -35,5 +35,6 @@ export class ShoppingCartPage extends AbstractPage {
       await this.clickOnAllRemoveCheckbox();
       await this.updateCartButton.click();
     }
+    await this.open();
   }
 }

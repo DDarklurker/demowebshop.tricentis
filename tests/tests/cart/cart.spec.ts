@@ -1,13 +1,11 @@
 import { expect } from "@playwright/test";
 import { test } from "../../../src/fixture/fixturePage";
 test.describe("Cart: @cart", async () => {
-  test.beforeEach(async ({ app: { homePage } }) => {
-    await homePage.open();
-  });
   test("Test Case 1 @smoke: add product to cart from category(Book - Computing and Internet)", async ({
     app: { homePage, product, shoppingCartPage },
     cleanCart,
   }) => {
+    await homePage.open();
     await homePage.catalogComponent.booksTab.click();
     await product.categoryProductsComponent.addToCartByName("Computing and Internet");
     await expect(homePage.headerComponent.productHasBeenAdded).toContainText(
@@ -22,6 +20,7 @@ test.describe("Cart: @cart", async () => {
     app: { homePage, product, productDetailPage, shoppingCartPage },
     cleanCart,
   }) => {
+    await homePage.open();
     await homePage.catalogComponent.booksTab.click();
     await product.openProductDetailsByName("Computing and Internet");
     await productDetailPage.addToCartButton.click();
